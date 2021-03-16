@@ -87,7 +87,7 @@ def addIDLetter(evening_students_list, morning_student_list):
             if key == 'id':
                 x[key] = value + 'M'
 
-#addIDLetter(tarde, maniana)
+addIDLetter(tarde, maniana)
 
 
 """
@@ -125,12 +125,14 @@ addCourse(all_python_Student)
 
 def searchStudent(id_student):
     id_student_list = [i['id'] for i in all_python_Student]
-    if id_student in id_student_list:
+    try:
+        assert id_student in id_student_list
+    except AssertionError:
+        print(f"this id {id_student} doesn't exist")
+    else:
         for i in all_python_Student:
             if i['id'] == id_student:
                 print(f"Name: {i['name']} \nId: {i['id']} \nGender: {i['gender']}")
-    else:
-        print(f"the student with the id '{id_student}' doesn't exist")
     return ''
 
 """
@@ -148,7 +150,7 @@ for i, x in enumerate(all_python_Student, start=1):
 print("|________________________________________________________________________________________|")
 #print(all_python_Student)
 """
-id_student = '0011'
+id_student = '001M'
 
 a = lambda id_student: searchStudent(id_student)
 
