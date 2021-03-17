@@ -124,16 +124,22 @@ addCourse(all_python_Student)
 
 
 def searchStudent(id_student):
-    id_student_list = [i['id'] for i in all_python_Student]
+    student_data = [i for i in all_python_Student if i['id'] == id_student]
     try:
-        assert id_student in id_student_list
+        assert len(student_data)
     except AssertionError:
-        print(f"this id {id_student} doesn't exist")
+        return f"this id {id_student} doesn't exist"
     else:
-        for i in all_python_Student:
-            if i['id'] == id_student:
-                print(f"Name: {i['name']} \nId: {i['id']} \nGender: {i['gender']}")
-    return ''
+        return f"Name: {student_data[0]['name']} \nId: {student_data[0]['id']} \nGender: {student_data[0]['gender']}"
+
+#id_student = input("Type a ID: ")
+
+id_student = '001M'
+a = lambda id_student: searchStudent(id_student)
+print(a(id_student))
+print(searchStudent(id_student))
+
+
 
 """
 print(" ________________________________________________________________________________________")
@@ -150,9 +156,4 @@ for i, x in enumerate(all_python_Student, start=1):
 print("|________________________________________________________________________________________|")
 #print(all_python_Student)
 """
-id_student = '001M'
 
-a = lambda id_student: searchStudent(id_student)
-
-print(a(id_student))
-print(searchStudent(id_student))
