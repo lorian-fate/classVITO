@@ -115,7 +115,7 @@ cursos matriculados
 """
 def addCourse(student_list):
     course_list = ['python', 'java', 'security IT']
-    for x in all_python_Student:
+    for x in student_list:
         #choice = input(f'Enter a course for this student {x['name']}: ')
         choice = random.choice(course_list)
         x['course'] = choice
