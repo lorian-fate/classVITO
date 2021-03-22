@@ -140,17 +140,34 @@ def percentage(dataset):
 										 densidad: float con tres decimales
 										 superficie: float con tres decimales
 * Ejercicio 9: Crear una función que acepte como parámetro toda la lista de diccionarios y devuelva una lista de objetos
+* Ejercicio 10: Considerando que en cada objeto tenemos la superficie y densidad ambas por km2, crear un MÉTODO 
+	(una función dentro del objeto) que devuelva la densidad total del municipio dado
+* Ejercicio 11: Ya que tenemos una lista con todos los objetos, con su método "get_total_density()" 
+	obtener la densidad total de la comunidad de Madrid
 
+* Ejercicio 12: Crea un contador de modo que cada vez que se cree una nueva instancia, el mencionado contador aumente en 1
+* Ejercicio 13: Crea un classmethod llamado from_str que crea una instancia de la siguiente cadena --> "test-3.54-23.86"
+* Ejercicio 14: Estable una tasa de crecimiento anual del 2%
+* Ejercicio 15: Define un método que aplique el crecimiento anual sobre un objeto
 """
 
 
 #==========================================   EXERCICE 5  ==========================================
+
+
+#* Ejercicio 5:
 class Municipality:
-    density_per_km2 = 'density_per_km2'
-    municipality_name = 'municipality_name'
-    surface_km2 = 'surface_km2'
+    counter = 0
+
+    def __init__(self, density_per_km2, municipality_name, surface_km2):
+        self.density_per_km2 = density_per_km2
+        self.municipality_name = municipality_name
+        self.surface_km2 = surface_km2
+        self.counter += 0 #*Ejercicio 12:
 
 
+    #* Ejercicio 7:
+    #* Ejercicio 8:								
     def return_municipality(self, municipality):
         data = get_json_data()
         ine_allowed = [ine_muni for ine_muni in data if ine_muni['municipio_nombre'] == municipality]
@@ -159,13 +176,54 @@ class Municipality:
         except AssertionError:
             print("The ine typed doesn't exist")
         else:
-            self
-            return ine_allowed
+            for ine in ine_allowed:
+                print(f"name: {ine['municipio_nombre']}\ndensity: {float(ine['densidad_por_km2'])}\nsurface: {float(ine['superficie_km2'])}")
+        return ''
+    
+    #* Ejercicio 10:
+    #* Ejercicio 11: 
+    def total_density(self, municipality):
+        data = get_json_data()
+        ine_allowed = [ine_muni for ine_muni in data if ine_muni['municipio_nombre'] == municipality]
+        all_mu = [mun for mun in data ]
+        population_density = ine_allowed[0]['densidad_por_km2']
+        surface_km2 = ine_allowed[0]['superficie_km2']
+        population = population_density * surface_km2
+        return f"the Total Density of: {surface_km2 * population_density}"
+    
+
+
+        self.density_per_km2 = density_per_km2
+        self.municipality_name = municipality_name
+        self.surface_km2 = surface_km2
+        self.counter += 0 #*Ejercicio 12:
+
+#* Ejercicio 9:
+def convertToObject(dict_list):
+    object_list = []
+    for dictionary in dict_list:
+        obj = Municipality(
+                        dictionary["densidad_por_km2"],
+                        dictionary["municipio_nombre"],
+                        dictionary["superficie_km2"])
+    
+        object_list.append(obj)
+    return object_list
+
+
+
 
 
 
     
 
+
+
+data = get_json_data()
+obj_municipality = Municipality('','','')
+obj_municipality.return_municipality('Ajalvir')
+print(obj_municipality.total_density('Madrid '))
+print(convertToObject(data))
 
 
     
@@ -186,30 +244,23 @@ class Municipality:
 
 #==========================================   EXERCICE 9  ==========================================
 #* Ejercicio 9: Crear una función que acepte como parámetro toda la lista de diccionarios y devuelva una lista de objetos
-class obDict:
-    def __init__(self, code_municipality, density, ine_municipality, nuts4_name, municipality_name, nuts4_code, surface):
-        self.code_municipality = code_municipality
-        self.density = density
-        self.ine_municipality = ine_municipality
-        self.nuts4_name = nuts4_name
-        self.municipality_name = municipality_name
-        self.nuts4_code = nuts4_code
-        self.surface = surface
-
-def convertToObject(dict_list):
-    object_list = []
-    for dictionary in dict_list:
-        obj = obDict(dictionary["municipio_codigo"], 
-                     dictionary["densidad_por_km2"],
-                     dictionary["municipio_codigo_ine"],
-                     dictionary["nuts4_nombre"],
-                     dictionary["municipio_nombre"],
-                     dictionary["nuts4_codigo"],
-                     dictionary["superficie_km2"])
-    
-        object_list.append(obj)
-    return object_list
 
 
-data = get_json_data()
-print(convertToObject(data))
+
+
+
+
+
+#==========================================   EXERCICE 10  ==========================================
+
+
+
+#==========================================   EXERCICE 11  ==========================================
+
+#==========================================   EXERCICE 12  ==========================================
+
+#==========================================   EXERCICE 13  ==========================================
+
+#==========================================   EXERCICE 14  ==========================================
+
+#==========================================   EXERCICE 15  ==========================================

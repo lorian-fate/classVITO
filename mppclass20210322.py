@@ -19,7 +19,7 @@ a = homo_corpus_perfectum.counter
 
 from itertools import combinations
 import itertools
-lis = ['a', 'b', 'c', 'd']
+lis = ['a', 'b', 'c']
 l = [i for i in itertools.permutations(lis,  4)]
 print(len(l))
 print(l)
