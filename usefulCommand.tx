@@ -24,3 +24,4 @@ git checkout (name_of_branc)
 git add file [file2]
 git commit -m ("Your MSG")
 git push origin (name_of_branch)
+
