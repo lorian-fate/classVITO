@@ -141,14 +141,6 @@ def percentage(dataset):
 										 superficie: float con tres decimales
 * Ejercicio 9: Crear una función que acepte como parámetro toda la lista de diccionarios y devuelva una lista de objetos
 
-                def __init__(self, code_municipality, density_per_km2, ine_code_municipality, nuts4_name, municipality_name, nuts4_code, surface_km2):
-        self.code_municipality = code_municipality
-        self.density_per_km2 = density_per_km2
-        self.ine_code_municipality = ine_code_municipality
-        self.nuts4_name = nuts4_name
-        self.municipality_name = municipality_name
-        self.nuts4_code = nuts4_code
-        self.surface_km2 = surface_km2
 """
 
 
@@ -171,6 +163,11 @@ class Municipality:
             return ine_allowed
 
 
+
+    
+
+
+
     
 
 
@@ -188,3 +185,31 @@ class Municipality:
 
 
 #==========================================   EXERCICE 9  ==========================================
+#* Ejercicio 9: Crear una función que acepte como parámetro toda la lista de diccionarios y devuelva una lista de objetos
+class obDict:
+    def __init__(self, code_municipality, density, ine_municipality, nuts4_name, municipality_name, nuts4_code, surface):
+        self.code_municipality = code_municipality
+        self.density = density
+        self.ine_municipality = ine_municipality
+        self.nuts4_name = nuts4_name
+        self.municipality_name = municipality_name
+        self.nuts4_code = nuts4_code
+        self.surface = surface
+
+def convertToObject(dict_list):
+    object_list = []
+    for dictionary in dict_list:
+        obj = obDict(dictionary["municipio_codigo"], 
+                     dictionary["densidad_por_km2"],
+                     dictionary["municipio_codigo_ine"],
+                     dictionary["nuts4_nombre"],
+                     dictionary["municipio_nombre"],
+                     dictionary["nuts4_codigo"],
+                     dictionary["superficie_km2"])
+    
+        object_list.append(obj)
+    return object_list
+
+
+data = get_json_data()
+print(convertToObject(data))
