@@ -149,6 +149,11 @@ def percentage(dataset):
 * Ejercicio 13: Crea un classmethod llamado from_str que crea una instancia de la siguiente cadena --> "test-3.54-23.86"
 * Ejercicio 14: Estable una tasa de crecimiento anual del 2%
 * Ejercicio 15: Define un método que aplique el crecimiento anual sobre un objeto
+* Ejercicio 16: Convertir el método del ejercicio 10 en propiedad
+* Ejercicio 17: Modificiar el print() para que también devuelva la población
+* Ejercicio 18: Define un set_anual_growth que permita modificar la tasa de crecimiento
+* Ejercicio 19: Agregar un Error Handeling para verficar que el type pasado como argumento en from_string sea un float
+
 """
 
 
@@ -185,18 +190,32 @@ class Municipality:
     def total_density(self, municipality):
         data = get_json_data()
         ine_allowed = [ine_muni for ine_muni in data if ine_muni['municipio_nombre'] == municipality]
-        all_mu = [mun for mun in data ]
-        population_density = ine_allowed[0]['densidad_por_km2']
-        surface_km2 = ine_allowed[0]['superficie_km2']
-        population = population_density * surface_km2
-        return f"the Total Density of: {surface_km2 * population_density}"
-    
+        all_population = [den["densidad_por_km2"]*den['superficie_km2'] for den in data]
+        all_surface = [sur['superficie_km2'] for sur in data]
+        
+        #population_density = ine_allowed[0]['densidad_por_km2']
+        #surface_km2 = ine_allowed[0]['superficie_km2']
+        #population = population_density * surface_km2
+
+        density = sum(all_population) /  sum(all_surface)
+        return f"the Total Density is: {density:.2f}, {sum(all_population)}"
 
 
-        self.density_per_km2 = density_per_km2
-        self.municipality_name = municipality_name
-        self.surface_km2 = surface_km2
-        self.counter += 0 #*Ejercicio 12:
+    #* Ejercicio 13: Crea un classmethod llamado from_str que crea una instancia de la siguiente cadena --> "test-3.54-23.86"
+    @classmethod
+    def from_str(cls, string_):
+        name, density, surface = string_.split('-')
+        return cls(name, density, surface) 
+
+
+    #* Ejercicio 14: Estable una tasa de crecimiento anual del 2% before year (6.377.040)
+    def annual_Growing(self):
+
+        pass
+
+
+    #* Ejercicio 15: Define un método que aplique el crecimiento anual sobre un objeto
+
 
 #* Ejercicio 9:
 def convertToObject(dict_list):
@@ -223,7 +242,8 @@ data = get_json_data()
 obj_municipality = Municipality('','','')
 obj_municipality.return_municipality('Ajalvir')
 print(obj_municipality.total_density('Madrid '))
-print(convertToObject(data))
+print(obj_municipality.from_str("Madrid-3.54-23.86"))
+#print(convertToObject(data))
 
 
     
@@ -243,12 +263,6 @@ print(convertToObject(data))
 
 
 #==========================================   EXERCICE 9  ==========================================
-#* Ejercicio 9: Crear una función que acepte como parámetro toda la lista de diccionarios y devuelva una lista de objetos
-
-
-
-
-
 
 
 #==========================================   EXERCICE 10  ==========================================
