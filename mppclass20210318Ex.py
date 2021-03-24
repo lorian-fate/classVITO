@@ -26,6 +26,7 @@ filter(multiple, numeros)
 #==========================================   EXERCICE 1  ==========================================
 # Obtender la densidad media de los municipios de Madrid
 from mppclass20210318 import get_json_data
+import csv
 
 def getAverageDensity():
     data = get_json_data()
@@ -154,6 +155,8 @@ def percentage(dataset):
 * Ejercicio 18: Define un set_anual_growth que permita modificar la tasa de crecimiento
 * Ejercicio 19: Agregar un Error Handeling para verficar que el type pasado como argumento en from_string sea un float
 
+CSV
+* Ejercicio 20: Crear un backup de todos nuestros objetos en un fichero tipo CSV
 """
 
 
@@ -201,11 +204,20 @@ class Municipality:
         return f"the Total Density is: {density:.2f}, {sum(all_population)}"
 
 
-    #* Ejercicio 13: Crea un classmethod llamado from_str que crea una instancia de la siguiente cadena --> "test-3.54-23.86"
+    #* Ejercicio 13: 
+    #* Ejercicio 19: 
     @classmethod
     def from_str(cls, string_):
-        name, density, surface = string_.split('-')
-        return cls(name, density, surface) 
+        try:
+            name, density, surface = string_.split('-')
+        except Exception:
+            return "invalid data"
+        try:
+            density, surface = float(density), float(surface)
+            return cls(name, density, surface) 
+        except Exception:
+            return "invalid data"
+        
 
 
     #* Ejercicio 14: Estable una tasa de crecimiento anual del 2% before year (6.377.040)
@@ -227,7 +239,14 @@ def convertToObject(dict_list):
                         dictionary["superficie_km2"])
     
         object_list.append(obj)
-    return object_list
+    objs = [[obj.density_per_km2, obj.municipality_name, obj.surface_km2] for obj in object_list]
+    with open('objectfile.csv', 'a') as file_object:
+        writer = csv.writer(file_object)
+        writer.writerows(objs)
+        #for obj in object_list:
+        #    writer.writerow([obj.density_per_km2, obj.municipality_name, obj.surface_km2])
+            
+    return ''
 
 
 
@@ -240,10 +259,10 @@ def convertToObject(dict_list):
 
 data = get_json_data()
 obj_municipality = Municipality('','','')
-obj_municipality.return_municipality('Ajalvir')
-print(obj_municipality.total_density('Madrid '))
-print(obj_municipality.from_str("Madrid-3.54-23.86"))
-#print(convertToObject(data))
+#obj_municipality.return_municipality('Ajalvir')
+#print(obj_municipality.total_density('Madrid '))
+print(obj_municipality.from_str("Madrid3s5423.86"))
+print(convertToObject(data))
 
 
     
