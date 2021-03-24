@@ -240,8 +240,9 @@ def convertToObject(dict_list):
     
         object_list.append(obj)
     objs = [[obj.density_per_km2, obj.municipality_name, obj.surface_km2] for obj in object_list]
-    with open('objectfile.csv', 'a') as file_object:
+    with open('backup_file.csv', 'a', newline="") as file_object:
         writer = csv.writer(file_object)
+        #writer.writeheader('DENSITY', 'NAME', 'SURFACE')
         writer.writerows(objs)
         #for obj in object_list:
         #    writer.writerow([obj.density_per_km2, obj.municipality_name, obj.surface_km2])
