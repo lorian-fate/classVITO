@@ -11,7 +11,7 @@ COUNTRIES
 
 * Ejercicio 4: Crear una pequeña aplicación con las siguientes características:
 
-* Debe permitirnos buscar países por nombre y por continentes Cada uno de los países buscados debe quedar escrito en un archivo tipo csv que solo admitira  los siguientes valores:          flag A su vez estos valores acturán como encabezados
+* Debe permitirnos buscar países por nombre y por continentes Cada uno de los países buscados debe quedar escrito en un archivo tipo csv que solo admitira  los siguientes valores: name, capital, region, population, area, idioma (el primero), flag A su vez estos valores acturán como encabezados
 
 * Cuando se busquen países por continente, estos deben ser escritos en un archivo json con nombre dinámico EJ. dinámico --> Si se busca "africa", el archivo deberá llamarse --> africa.json
 

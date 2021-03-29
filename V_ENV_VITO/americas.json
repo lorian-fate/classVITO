@@ -1,0 +1,403 @@
+{
+    "countries": [
+        {
+            "name": "Anguilla",
+            "capital": "The Valley",
+            "region": "Americas",
+            "population": 13452,
+            "language": "English"
+        },
+        {
+            "name": "Antigua and Barbuda",
+            "capital": "Saint John's",
+            "region": "Americas",
+            "population": 86295,
+            "language": "English"
+        },
+        {
+            "name": "Argentina",
+            "capital": "Buenos Aires",
+            "region": "Americas",
+            "population": 43590400,
+            "language": "Spanish"
+        },
+        {
+            "name": "Aruba",
+            "capital": "Oranjestad",
+            "region": "Americas",
+            "population": 107394,
+            "language": "Dutch"
+        },
+        {
+            "name": "Bahamas",
+            "capital": "Nassau",
+            "region": "Americas",
+            "population": 378040,
+            "language": "English"
+        },
+        {
+            "name": "Barbados",
+            "capital": "Bridgetown",
+            "region": "Americas",
+            "population": 285000,
+            "language": "English"
+        },
+        {
+            "name": "Belize",
+            "capital": "Belmopan",
+            "region": "Americas",
+            "population": 370300,
+            "language": "English"
+        },
+        {
+            "name": "Bermuda",
+            "capital": "Hamilton",
+            "region": "Americas",
+            "population": 61954,
+            "language": "English"
+        },
+        {
+            "name": "Bolivia (Plurinational State of)",
+            "capital": "Sucre",
+            "region": "Americas",
+            "population": 10985059,
+            "language": "Spanish"
+        },
+        {
+            "name": "Bonaire, Sint Eustatius and Saba",
+            "capital": "Kralendijk",
+            "region": "Americas",
+            "population": 17408,
+            "language": "Dutch"
+        },
+        {
+            "name": "Brazil",
+            "capital": "Bras\u00edlia",
+            "region": "Americas",
+            "population": 206135893,
+            "language": "Portuguese"
+        },
+        {
+            "name": "United States Minor Outlying Islands",
+            "capital": "",
+            "region": "Americas",
+            "population": 300,
+            "language": "English"
+        },
+        {
+            "name": "Virgin Islands (British)",
+            "capital": "Road Town",
+            "region": "Americas",
+            "population": 28514,
+            "language": "English"
+        },
+        {
+            "name": "Virgin Islands (U.S.)",
+            "capital": "Charlotte Amalie",
+            "region": "Americas",
+            "population": 114743,
+            "language": "English"
+        },
+        {
+            "name": "Canada",
+            "capital": "Ottawa",
+            "region": "Americas",
+            "population": 36155487,
+            "language": "English"
+        },
+        {
+            "name": "Cayman Islands",
+            "capital": "George Town",
+            "region": "Americas",
+            "population": 58238,
+            "language": "English"
+        },
+        {
+            "name": "Chile",
+            "capital": "Santiago",
+            "region": "Americas",
+            "population": 18191900,
+            "language": "Spanish"
+        },
+        {
+            "name": "Colombia",
+            "capital": "Bogot\u00e1",
+            "region": "Americas",
+            "population": 48759958,
+            "language": "Spanish"
+        },
+        {
+            "name": "Costa Rica",
+            "capital": "San Jos\u00e9",
+            "region": "Americas",
+            "population": 4890379,
+            "language": "Spanish"
+        },
+        {
+            "name": "Cuba",
+            "capital": "Havana",
+            "region": "Americas",
+            "population": 11239004,
+            "language": "Spanish"
+        },
+        {
+            "name": "Cura\u00e7ao",
+            "capital": "Willemstad",
+            "region": "Americas",
+            "population": 154843,
+            "language": "Dutch"
+        },
+        {
+            "name": "Dominica",
+            "capital": "Roseau",
+            "region": "Americas",
+            "population": 71293,
+            "language": "English"
+        },
+        {
+            "name": "Dominican Republic",
+            "capital": "Santo Domingo",
+            "region": "Americas",
+            "population": 10075045,
+            "language": "Spanish"
+        },
+        {
+            "name": "Ecuador",
+            "capital": "Quito",
+            "region": "Americas",
+            "population": 16545799,
+            "language": "Spanish"
+        },
+        {
+            "name": "El Salvador",
+            "capital": "San Salvador",
+            "region": "Americas",
+            "population": 6520675,
+            "language": "Spanish"
+        },
+        {
+            "name": "Falkland Islands (Malvinas)",
+            "capital": "Stanley",
+            "region": "Americas",
+            "population": 2563,
+            "language": "English"
+        },
+        {
+            "name": "French Guiana",
+            "capital": "Cayenne",
+            "region": "Americas",
+            "population": 254541,
+            "language": "French"
+        },
+        {
+            "name": "Greenland",
+            "capital": "Nuuk",
+            "region": "Americas",
+            "population": 55847,
+            "language": "Kalaallisut"
+        },
+        {
+            "name": "Grenada",
+            "capital": "St. George's",
+            "region": "Americas",
+            "population": 103328,
+            "language": "English"
+        },
+        {
+            "name": "Guadeloupe",
+            "capital": "Basse-Terre",
+            "region": "Americas",
+            "population": 400132,
+            "language": "French"
+        },
+        {
+            "name": "Guatemala",
+            "capital": "Guatemala City",
+            "region": "Americas",
+            "population": 16176133,
+            "language": "Spanish"
+        },
+        {
+            "name": "Guyana",
+            "capital": "Georgetown",
+            "region": "Americas",
+            "population": 746900,
+            "language": "English"
+        },
+        {
+            "name": "Haiti",
+            "capital": "Port-au-Prince",
+            "region": "Americas",
+            "population": 11078033,
+            "language": "French"
+        },
+        {
+            "name": "Honduras",
+            "capital": "Tegucigalpa",
+            "region": "Americas",
+            "population": 8576532,
+            "language": "Spanish"
+        },
+        {
+            "name": "Jamaica",
+            "capital": "Kingston",
+            "region": "Americas",
+            "population": 2723246,
+            "language": "English"
+        },
+        {
+            "name": "Martinique",
+            "capital": "Fort-de-France",
+            "region": "Americas",
+            "population": 378243,
+            "language": "French"
+        },
+        {
+            "name": "Mexico",
+            "capital": "Mexico City",
+            "region": "Americas",
+            "population": 122273473,
+            "language": "Spanish"
+        },
+        {
+            "name": "Montserrat",
+            "capital": "Plymouth",
+            "region": "Americas",
+            "population": 4922,
+            "language": "English"
+        },
+        {
+            "name": "Nicaragua",
+            "capital": "Managua",
+            "region": "Americas",
+            "population": 6262703,
+            "language": "Spanish"
+        },
+        {
+            "name": "Panama",
+            "capital": "Panama City",
+            "region": "Americas",
+            "population": 3814672,
+            "language": "Spanish"
+        },
+        {
+            "name": "Paraguay",
+            "capital": "Asunci\u00f3n",
+            "region": "Americas",
+            "population": 6854536,
+            "language": "Spanish"
+        },
+        {
+            "name": "Peru",
+            "capital": "Lima",
+            "region": "Americas",
+            "population": 31488700,
+            "language": "Spanish"
+        },
+        {
+            "name": "Puerto Rico",
+            "capital": "San Juan",
+            "region": "Americas",
+            "population": 3474182,
+            "language": "Spanish"
+        },
+        {
+            "name": "Saint Barth\u00e9lemy",
+            "capital": "Gustavia",
+            "region": "Americas",
+            "population": 9417,
+            "language": "French"
+        },
+        {
+            "name": "Saint Kitts and Nevis",
+            "capital": "Basseterre",
+            "region": "Americas",
+            "population": 46204,
+            "language": "English"
+        },
+        {
+            "name": "Saint Lucia",
+            "capital": "Castries",
+            "region": "Americas",
+            "population": 186000,
+            "language": "English"
+        },
+        {
+            "name": "Saint Martin (French part)",
+            "capital": "Marigot",
+            "region": "Americas",
+            "population": 36979,
+            "language": "English"
+        },
+        {
+            "name": "Saint Pierre and Miquelon",
+            "capital": "Saint-Pierre",
+            "region": "Americas",
+            "population": 6069,
+            "language": "French"
+        },
+        {
+            "name": "Saint Vincent and the Grenadines",
+            "capital": "Kingstown",
+            "region": "Americas",
+            "population": 109991,
+            "language": "English"
+        },
+        {
+            "name": "Sint Maarten (Dutch part)",
+            "capital": "Philipsburg",
+            "region": "Americas",
+            "population": 38247,
+            "language": "Dutch"
+        },
+        {
+            "name": "South Georgia and the South Sandwich Islands",
+            "capital": "King Edward Point",
+            "region": "Americas",
+            "population": 30,
+            "language": "English"
+        },
+        {
+            "name": "Suriname",
+            "capital": "Paramaribo",
+            "region": "Americas",
+            "population": 541638,
+            "language": "Dutch"
+        },
+        {
+            "name": "Trinidad and Tobago",
+            "capital": "Port of Spain",
+            "region": "Americas",
+            "population": 1349667,
+            "language": "English"
+        },
+        {
+            "name": "Turks and Caicos Islands",
+            "capital": "Cockburn Town",
+            "region": "Americas",
+            "population": 31458,
+            "language": "English"
+        },
+        {
+            "name": "United States of America",
+            "capital": "Washington, D.C.",
+            "region": "Americas",
+            "population": 323947000,
+            "language": "English"
+        },
+        {
+            "name": "Uruguay",
+            "capital": "Montevideo",
+            "region": "Americas",
+            "population": 3480222,
+            "language": "Spanish"
+        },
+        {
+            "name": "Venezuela (Bolivarian Republic of)",
+            "capital": "Caracas",
+            "region": "Americas",
+            "population": 31028700,
+            "language": "Spanish"
+        }
+    ]
+}
