@@ -74,5 +74,10 @@ def search_country(name):
         
 #* name, capital, region, population, area, idioma (el primero),
 
+
+def menu():
+    print("PENDING")
+
+
 print(search_country('benin'))
 
