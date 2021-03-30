@@ -20,13 +20,13 @@ COUNTRIES
 * Ejercicio 6: Agregar opción "population"
 
 * Ejercicio 7: Al elegir la opción population se obtendrá la población total que el usuario haya indicado anteriormente, de no existir el archivo manejar el error
-====================================================================================================================
+
 *Ejercicio 8: Luego de buscar un país e imprimirlo por pantalla preguntar si desea guardar la imagen del país encontrado.
 
 *Ejercicio 9: Descargar la imagen indicada con anterioridad en --> ./images (Nota: El formato de las imágenes de restcountries es SVG)
 
 *Ejercicio 10: Agregar una root function historial de búsqueda
-
+===================================================================================================================================================
 *Ejercicio 11: La función del ejercicio 10, entregará los nombres y las poblaciones de todos los países previamente buscados de la siguiente manera name:value**\n**poblacion: value
 
 *Ejercicio 12: Luego de mostrar la lista de países del ejercicio 10 preguntar si quiere descargar las banderas de los mismos

@@ -12,6 +12,7 @@ def myRequest(name=None):
     else:
         return req.get(f"https://restcountries.eu/rest/v2/name/{name}").json() 
 
+
 def population_continent(name):
     try:
         file_json = open(f"{name}.json")
@@ -21,6 +22,10 @@ def population_continent(name):
     except FileNotFoundError:
         return "The region typed doesnt exist"
     
+
+def historical_searching():
+    
+    pass
 
 def search_country(name):
     my_request = myRequest()
@@ -46,7 +51,7 @@ def search_country(name):
                 if option == 'y':
                     imag = req.get(my_country[0]['flag'])
                     image_name = my_country[0]['flag'].split('/')[-1]
-                    image_dir = f"./images/{image_name}"
+                    image_dir = f"../images_countries/{image_name}"
                     with open(image_dir, 'wb') as im:
                         im.write(imag.content)
                 with open('countries.csv', 'a', newline='') as file_co:
