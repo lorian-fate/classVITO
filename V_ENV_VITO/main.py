@@ -119,14 +119,33 @@ class Country:
         self.name = name
         self.capital = capital
         self.population = population
+    #* PENDING
     
-    
+#* MENU TIPO: --REST Countries-- Country Region Population --> country||region --> if !country: req else: from json Search history --> 
+#* lista de países --> Quiere descargar las imágenes de las banderas ? write wb:pass
 
 
 def menu():
-    print("PENDING")
 
 
-#print(search_country('spain'))
-historical_searching()
-#print(population_continent('americas'))
+    exit_command = True
+    while exit_command == True:
+        print("=============================================================================")
+        print("============================      MENU        ===============================")
+        print("=============================================================================")
+        option = input("1._COUNTRIES \n2._REGION \n3._EXIT\nCHOOSE AN OPTION: ")
+        if option == '1':
+            pass
+        elif option == '2':
+            pass
+        elif option == '3':
+            exit_command = False
+        else:
+            print("This option doesn't exist")
+        
+
+
+menu()
+print("=============================================================================")
+print("===========================  PROGRAM SHUTDOWN   ==============================")
+print("=============================================================================")
