@@ -24,8 +24,32 @@ def population_continent(name):
     
 
 def historical_searching():
-    
-    pass
+    try:
+        with open("countries.csv", "r") as countrie_file:
+            csv_reader = csv.reader(countrie_file)
+            list_flag = []
+            print("|------------------------|------------------------|")
+            print("|", "\t","COUNTRY","\t", "|", "\t", "POPULATION", "\t"," |")
+            print("|------------------------|------------------------|")
+            for country_in_csv_file in csv_reader:
+                list_flag.append(country_in_csv_file[-1])
+                print("|","\t",country_in_csv_file[0], "\t\t", "|", "\t", country_in_csv_file[3], "\t"," |")
+                print("|------------------------|------------------------|")
+            
+            option = input("Do you wish to download the flags of these countries (y/n):") 
+            if option == 'y':
+                url_flag = "https://restcountries.eu/data/{}"
+                diretories = os.listdir("../images_countries")
+                for flag_country in list_flag:
+                    flag_extension = flag_country.split("/")[-1]
+                    if flag_extension not in diretories:
+                        imag = req.get(f"https://restcountries.eu/data/{flag_extension}")
+                        with open(f"../images_countries/{flag_extension}", "wb") as imag_file:
+                            imag_file.write(imag.content)
+            return ""
+
+    except FileNotFoundError:
+        return "The file doesn't exist"
 
 def search_country(name):
     my_request = myRequest()
@@ -89,9 +113,20 @@ def search_country(name):
         
 
 
+class Country:
+    
+    def __init__(self, name, capital, population):
+        self.name = name
+        self.capital = capital
+        self.population = population
+    
+    
+
+
 def menu():
     print("PENDING")
 
 
-print(search_country('spain'))
+#print(search_country('spain'))
+historical_searching()
 #print(population_continent('americas'))
