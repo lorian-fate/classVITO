@@ -28,9 +28,9 @@ def population_continent(name):
 
 
 def load_function(interval):
-    bar1 = Bar('Procesando:', max=20)
+    bar1 = Bar('Procesando:', max=100)
     for num in range(interval):
-        time.sleep(0.2)
+        time.sleep(0.01)
         bar1.next()
     bar1.finish()
 
@@ -153,29 +153,25 @@ def menu():
 
         if option == '1': 
             country_NAME = input("Type the country name: ")
+            load_function(100)
             search_country_or_continent(country_NAME)
-            time.sleep(2)
-            load_function(20)
             clear_SCREAN()
 
         elif option == '2':
             region_NAME = input("Type the region name: ")
+            load_function(100)
             search_country_or_continent(region_NAME)
-            time.sleep(2)
-            load_function(20)
             clear_SCREAN()
 
         elif option == '3':
             region_NAME = input("Type the region name: ")
             population_continent(region_NAME)
-            time.sleep(2)
-            load_function(20)
+            load_function(100)
             clear_SCREAN()
 
         elif option == '4': 
+            load_function(100)
             historical_searching()
-            time.sleep(2)
-            load_function(20)
             clear_SCREAN()
 
         elif option == '5':
