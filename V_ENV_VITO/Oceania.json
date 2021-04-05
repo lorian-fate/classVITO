@@ -1,0 +1,193 @@
+{
+    "countries": [
+        {
+            "name": "American Samoa",
+            "capital": "Pago Pago",
+            "region": "Oceania",
+            "population": 57100,
+            "language": "English"
+        },
+        {
+            "name": "Australia",
+            "capital": "Canberra",
+            "region": "Oceania",
+            "population": 24117360,
+            "language": "English"
+        },
+        {
+            "name": "Christmas Island",
+            "capital": "Flying Fish Cove",
+            "region": "Oceania",
+            "population": 2072,
+            "language": "English"
+        },
+        {
+            "name": "Cocos (Keeling) Islands",
+            "capital": "West Island",
+            "region": "Oceania",
+            "population": 550,
+            "language": "English"
+        },
+        {
+            "name": "Cook Islands",
+            "capital": "Avarua",
+            "region": "Oceania",
+            "population": 18100,
+            "language": "English"
+        },
+        {
+            "name": "Fiji",
+            "capital": "Suva",
+            "region": "Oceania",
+            "population": 867000,
+            "language": "English"
+        },
+        {
+            "name": "French Polynesia",
+            "capital": "Papeet\u0113",
+            "region": "Oceania",
+            "population": 271800,
+            "language": "French"
+        },
+        {
+            "name": "Guam",
+            "capital": "Hag\u00e5t\u00f1a",
+            "region": "Oceania",
+            "population": 184200,
+            "language": "English"
+        },
+        {
+            "name": "Kiribati",
+            "capital": "South Tarawa",
+            "region": "Oceania",
+            "population": 113400,
+            "language": "English"
+        },
+        {
+            "name": "Marshall Islands",
+            "capital": "Majuro",
+            "region": "Oceania",
+            "population": 54880,
+            "language": "English"
+        },
+        {
+            "name": "Micronesia (Federated States of)",
+            "capital": "Palikir",
+            "region": "Oceania",
+            "population": 102800,
+            "language": "English"
+        },
+        {
+            "name": "Nauru",
+            "capital": "Yaren",
+            "region": "Oceania",
+            "population": 10084,
+            "language": "English"
+        },
+        {
+            "name": "New Caledonia",
+            "capital": "Noum\u00e9a",
+            "region": "Oceania",
+            "population": 268767,
+            "language": "French"
+        },
+        {
+            "name": "New Zealand",
+            "capital": "Wellington",
+            "region": "Oceania",
+            "population": 4697854,
+            "language": "English"
+        },
+        {
+            "name": "Niue",
+            "capital": "Alofi",
+            "region": "Oceania",
+            "population": 1470,
+            "language": "English"
+        },
+        {
+            "name": "Norfolk Island",
+            "capital": "Kingston",
+            "region": "Oceania",
+            "population": 2302,
+            "language": "English"
+        },
+        {
+            "name": "Northern Mariana Islands",
+            "capital": "Saipan",
+            "region": "Oceania",
+            "population": 56940,
+            "language": "English"
+        },
+        {
+            "name": "Palau",
+            "capital": "Ngerulmud",
+            "region": "Oceania",
+            "population": 17950,
+            "language": "English"
+        },
+        {
+            "name": "Papua New Guinea",
+            "capital": "Port Moresby",
+            "region": "Oceania",
+            "population": 8083700,
+            "language": "English"
+        },
+        {
+            "name": "Pitcairn",
+            "capital": "Adamstown",
+            "region": "Oceania",
+            "population": 56,
+            "language": "English"
+        },
+        {
+            "name": "Samoa",
+            "capital": "Apia",
+            "region": "Oceania",
+            "population": 194899,
+            "language": "Samoan"
+        },
+        {
+            "name": "Solomon Islands",
+            "capital": "Honiara",
+            "region": "Oceania",
+            "population": 642000,
+            "language": "English"
+        },
+        {
+            "name": "Tokelau",
+            "capital": "Fakaofo",
+            "region": "Oceania",
+            "population": 1411,
+            "language": "English"
+        },
+        {
+            "name": "Tonga",
+            "capital": "Nuku'alofa",
+            "region": "Oceania",
+            "population": 103252,
+            "language": "English"
+        },
+        {
+            "name": "Tuvalu",
+            "capital": "Funafuti",
+            "region": "Oceania",
+            "population": 10640,
+            "language": "English"
+        },
+        {
+            "name": "Vanuatu",
+            "capital": "Port Vila",
+            "region": "Oceania",
+            "population": 277500,
+            "language": "Bislama"
+        },
+        {
+            "name": "Wallis and Futuna",
+            "capital": "Mata-Utu",
+            "region": "Oceania",
+            "population": 11750,
+            "language": "French"
+        }
+    ]
+}

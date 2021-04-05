@@ -4,7 +4,7 @@ import json
 import os
 from os import system
 import time
-
+from progress.bar import Bar
 
 
 
@@ -25,6 +25,14 @@ def population_continent(name):
         print(f"The total population of {name} is {sum(total_population)}")
     except FileNotFoundError:
         print("The region typed doesnt exist")
+
+
+def load_function(interval):
+    bar1 = Bar('Procesando:', max=20)
+    for num in range(interval):
+        time.sleep(0.2)
+        bar1.next()
+    bar1.finish()
 
 
 def historical_searching():
@@ -147,23 +155,27 @@ def menu():
             country_NAME = input("Type the country name: ")
             search_country_or_continent(country_NAME)
             time.sleep(2)
+            load_function(20)
             clear_SCREAN()
 
         elif option == '2':
             region_NAME = input("Type the region name: ")
             search_country_or_continent(region_NAME)
             time.sleep(2)
+            load_function(20)
             clear_SCREAN()
 
         elif option == '3':
             region_NAME = input("Type the region name: ")
             population_continent(region_NAME)
             time.sleep(2)
+            load_function(20)
             clear_SCREAN()
 
         elif option == '4': 
             historical_searching()
             time.sleep(2)
+            load_function(20)
             clear_SCREAN()
 
         elif option == '5':
