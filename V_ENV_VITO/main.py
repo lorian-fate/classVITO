@@ -130,9 +130,6 @@ class Country:
         self.total_population += int(population)
 
     
-#* MENU TIPO: --REST Countries-- Country Region Population --> country||region --> if !country: req else: from json Search history --> 
-#* lista de países --> Quiere descargar las imágenes de las banderas ? write wb:pass
-
 
 def menu():
 
@@ -144,25 +141,30 @@ def menu():
         print("=============================================================================")
         option = input("1._COUNTRIES \n2._REGION \n3._POPULATION \n4._SHOW RECORD \
         \n5._CONVERT COUNTRIES IN OBJECT \n6._EXIT\nCHOOSE AN OPTION: ")
+
         if option == '1': 
             country_NAME = input("Type the country name: ")
             search_country_or_continent(country_NAME)
             time.sleep(2)
             clear_SCREAN()
+
         elif option == '2':
             region_NAME = input("Type the region name: ")
             search_country_or_continent(region_NAME)
             time.sleep(2)
             clear_SCREAN()
+
         elif option == '3':
             region_NAME = input("Type the region name: ")
             population_continent(region_NAME)
             time.sleep(2)
             clear_SCREAN()
+
         elif option == '4': 
             historical_searching()
             time.sleep(2)
             clear_SCREAN()
+
         elif option == '5':
             with open("countries.csv", "r") as countries_file:
                 csv_reader = csv.reader(countries_file)
@@ -173,6 +175,7 @@ def menu():
                         print(obj_Country.total_population)
             time.sleep(2)
             clear_SCREAN()
+
         elif option == '6':
             exit_command = False
         else:
