@@ -2,6 +2,8 @@ import requests as req
 import csv
 import json
 import os
+from os import system
+import time
 
 
 
@@ -12,16 +14,18 @@ def myRequest(name=None):
     else:
         return req.get(f"https://restcountries.eu/rest/v2/name/{name}").json() 
 
+def clear_SCREAN():
+    return system("cls")
 
 def population_continent(name):
     try:
         file_json = open(f"{name}.json")
         population = json.load(file_json)
         total_population = [popus['population'] for popus in population['countries']]
-        return f"The total population of {name} is {sum(total_population)}"
+        print(f"The total population of {name} is {sum(total_population)}")
     except FileNotFoundError:
-        return "The region typed doesnt exist"
-    
+        print("The region typed doesnt exist")
+
 
 def historical_searching():
     try:
@@ -33,8 +37,12 @@ def historical_searching():
             print("|------------------------|------------------------|")
             for country_in_csv_file in csv_reader:
                 list_flag.append(country_in_csv_file[-1])
-                print("|","\t",country_in_csv_file[0], "\t\t", "|", "\t", country_in_csv_file[3], "\t"," |")
-                print("|------------------------|------------------------|")
+                if len(country_in_csv_file[0]) <= 5:
+                    print("|","\t",country_in_csv_file[0], "\t\t", "|", "\t", country_in_csv_file[3], "\t"," |")
+                    print("|------------------------|------------------------|")
+                elif len(country_in_csv_file[0]) >= 6:
+                    print("|","\t",country_in_csv_file[0], "\t", "|", "\t", country_in_csv_file[3], "\t"," |")
+                    print("|------------------------|------------------------|")
             
             option = input("Do you wish to download the flags of these countries (y/n):") 
             if option == 'y':
@@ -51,7 +59,7 @@ def historical_searching():
     except FileNotFoundError:
         return "The file doesn't exist"
 
-def search_country(name):
+def search_country_or_continent(name):
     my_request = myRequest()
     set_continents = {continent['region'] for continent in my_request}
     set_countries = {country['name'] for country in my_request}
@@ -67,7 +75,7 @@ def search_country(name):
             read_line = csv.reader(country_file)
             try:
                 assert [True for country in read_line if name.capitalize() in country]
-                return f"The country {name} already exist"
+                print(f"The country {name} already exist")
                 country_file.close()
 
             except AssertionError:
@@ -81,19 +89,19 @@ def search_country(name):
                 with open('countries.csv', 'a', newline='') as file_co:
                     writer_line = csv.writer(file_co)
                     writer_line.writerow(list_param)
-                    return f"Country saved successfully"
+                    print(f"Country saved successfully")
 
         except FileNotFoundError:
             with open("countries.csv", 'a', newline='') as country_file:
                 writer_line = csv.writer(country_file)
                 writer_line.writerow(list_param)
-                return f"country saved successfully"
+                print(f"country saved successfully")
 
     elif name.capitalize() in set_continents:
         currentDirectory = os.path.dirname(os.path.realpath(__file__))
         diretories = os.listdir(currentDirectory)
         if str(f'{name}.json') in diretories:
-            return list_countries
+            print("The region already exist")
         else:
             
             json_data = {
@@ -107,19 +115,20 @@ def search_country(name):
                 }
             with open(f"{name}.json", "w") as json_file:
                 json.dump(json_data, json_file, indent=4)
-            return list_countries
+            print("Region saved successfully")
     else:
         return f"Invalid name"
         
 
 
 class Country:
-    
+    total_population = 0
+
     def __init__(self, name, capital, population):
         self.name = name
         self.capital = capital
-        self.population = population
-    #* PENDING
+        self.total_population += int(population)
+
     
 #* MENU TIPO: --REST Countries-- Country Region Population --> country||region --> if !country: req else: from json Search history --> 
 #* lista de países --> Quiere descargar las imágenes de las banderas ? write wb:pass
@@ -133,12 +142,38 @@ def menu():
         print("=============================================================================")
         print("============================      MENU        ===============================")
         print("=============================================================================")
-        option = input("1._COUNTRIES \n2._REGION \n3._EXIT\nCHOOSE AN OPTION: ")
-        if option == '1':
-            pass
+        option = input("1._COUNTRIES \n2._REGION \n3._POPULATION \n4._SHOW RECORD \
+        \n5._CONVERT COUNTRIES IN OBJECT \n6._EXIT\nCHOOSE AN OPTION: ")
+        if option == '1': 
+            country_NAME = input("Type the country name: ")
+            search_country_or_continent(country_NAME)
+            time.sleep(2)
+            clear_SCREAN()
         elif option == '2':
-            pass
+            region_NAME = input("Type the region name: ")
+            search_country_or_continent(region_NAME)
+            time.sleep(2)
+            clear_SCREAN()
         elif option == '3':
+            region_NAME = input("Type the region name: ")
+            population_continent(region_NAME)
+            time.sleep(2)
+            clear_SCREAN()
+        elif option == '4': 
+            historical_searching()
+            time.sleep(2)
+            clear_SCREAN()
+        elif option == '5':
+            with open("countries.csv", "r") as countries_file:
+                csv_reader = csv.reader(countries_file)
+                for country in csv_reader:
+                    obj_Country = Country(country[0], country[1], country[3])
+                    class_ATTRIBUTE = input("Do you wish to access to the class attribute (y/n): ")
+                    if class_ATTRIBUTE == 'y':
+                        print(obj_Country.total_population)
+            time.sleep(2)
+            clear_SCREAN()
+        elif option == '6':
             exit_command = False
         else:
             print("This option doesn't exist")
@@ -146,6 +181,6 @@ def menu():
 
 
 menu()
-print("=============================================================================")
+print("==============================================================================")
 print("===========================  PROGRAM SHUTDOWN   ==============================")
-print("=============================================================================")
+print("==============================================================================")

@@ -1,0 +1,424 @@
+{
+    "countries": [
+        {
+            "name": "Algeria",
+            "capital": "Algiers",
+            "region": "Africa",
+            "population": 40400000,
+            "language": "Arabic"
+        },
+        {
+            "name": "Angola",
+            "capital": "Luanda",
+            "region": "Africa",
+            "population": 25868000,
+            "language": "Portuguese"
+        },
+        {
+            "name": "Benin",
+            "capital": "Porto-Novo",
+            "region": "Africa",
+            "population": 10653654,
+            "language": "French"
+        },
+        {
+            "name": "Botswana",
+            "capital": "Gaborone",
+            "region": "Africa",
+            "population": 2141206,
+            "language": "English"
+        },
+        {
+            "name": "British Indian Ocean Territory",
+            "capital": "Diego Garcia",
+            "region": "Africa",
+            "population": 3000,
+            "language": "English"
+        },
+        {
+            "name": "Burkina Faso",
+            "capital": "Ouagadougou",
+            "region": "Africa",
+            "population": 19034397,
+            "language": "French"
+        },
+        {
+            "name": "Burundi",
+            "capital": "Bujumbura",
+            "region": "Africa",
+            "population": 10114505,
+            "language": "French"
+        },
+        {
+            "name": "Cameroon",
+            "capital": "Yaound\u00e9",
+            "region": "Africa",
+            "population": 22709892,
+            "language": "English"
+        },
+        {
+            "name": "Cabo Verde",
+            "capital": "Praia",
+            "region": "Africa",
+            "population": 531239,
+            "language": "Portuguese"
+        },
+        {
+            "name": "Central African Republic",
+            "capital": "Bangui",
+            "region": "Africa",
+            "population": 4998000,
+            "language": "French"
+        },
+        {
+            "name": "Chad",
+            "capital": "N'Djamena",
+            "region": "Africa",
+            "population": 14497000,
+            "language": "French"
+        },
+        {
+            "name": "Comoros",
+            "capital": "Moroni",
+            "region": "Africa",
+            "population": 806153,
+            "language": "Arabic"
+        },
+        {
+            "name": "Congo",
+            "capital": "Brazzaville",
+            "region": "Africa",
+            "population": 4741000,
+            "language": "French"
+        },
+        {
+            "name": "Congo (Democratic Republic of the)",
+            "capital": "Kinshasa",
+            "region": "Africa",
+            "population": 85026000,
+            "language": "French"
+        },
+        {
+            "name": "Djibouti",
+            "capital": "Djibouti",
+            "region": "Africa",
+            "population": 900000,
+            "language": "French"
+        },
+        {
+            "name": "Egypt",
+            "capital": "Cairo",
+            "region": "Africa",
+            "population": 91290000,
+            "language": "Arabic"
+        },
+        {
+            "name": "Equatorial Guinea",
+            "capital": "Malabo",
+            "region": "Africa",
+            "population": 1222442,
+            "language": "Spanish"
+        },
+        {
+            "name": "Eritrea",
+            "capital": "Asmara",
+            "region": "Africa",
+            "population": 5352000,
+            "language": "Tigrinya"
+        },
+        {
+            "name": "Ethiopia",
+            "capital": "Addis Ababa",
+            "region": "Africa",
+            "population": 92206005,
+            "language": "Amharic"
+        },
+        {
+            "name": "French Southern Territories",
+            "capital": "Port-aux-Fran\u00e7ais",
+            "region": "Africa",
+            "population": 140,
+            "language": "French"
+        },
+        {
+            "name": "Gabon",
+            "capital": "Libreville",
+            "region": "Africa",
+            "population": 1802278,
+            "language": "French"
+        },
+        {
+            "name": "Gambia",
+            "capital": "Banjul",
+            "region": "Africa",
+            "population": 1882450,
+            "language": "English"
+        },
+        {
+            "name": "Ghana",
+            "capital": "Accra",
+            "region": "Africa",
+            "population": 27670174,
+            "language": "English"
+        },
+        {
+            "name": "Guinea",
+            "capital": "Conakry",
+            "region": "Africa",
+            "population": 12947000,
+            "language": "French"
+        },
+        {
+            "name": "Guinea-Bissau",
+            "capital": "Bissau",
+            "region": "Africa",
+            "population": 1547777,
+            "language": "Portuguese"
+        },
+        {
+            "name": "C\u00f4te d'Ivoire",
+            "capital": "Yamoussoukro",
+            "region": "Africa",
+            "population": 22671331,
+            "language": "French"
+        },
+        {
+            "name": "Kenya",
+            "capital": "Nairobi",
+            "region": "Africa",
+            "population": 47251000,
+            "language": "English"
+        },
+        {
+            "name": "Lesotho",
+            "capital": "Maseru",
+            "region": "Africa",
+            "population": 1894194,
+            "language": "English"
+        },
+        {
+            "name": "Liberia",
+            "capital": "Monrovia",
+            "region": "Africa",
+            "population": 4615000,
+            "language": "English"
+        },
+        {
+            "name": "Libya",
+            "capital": "Tripoli",
+            "region": "Africa",
+            "population": 6385000,
+            "language": "Arabic"
+        },
+        {
+            "name": "Madagascar",
+            "capital": "Antananarivo",
+            "region": "Africa",
+            "population": 22434363,
+            "language": "French"
+        },
+        {
+            "name": "Malawi",
+            "capital": "Lilongwe",
+            "region": "Africa",
+            "population": 16832910,
+            "language": "English"
+        },
+        {
+            "name": "Mali",
+            "capital": "Bamako",
+            "region": "Africa",
+            "population": 18135000,
+            "language": "French"
+        },
+        {
+            "name": "Mauritania",
+            "capital": "Nouakchott",
+            "region": "Africa",
+            "population": 3718678,
+            "language": "Arabic"
+        },
+        {
+            "name": "Mauritius",
+            "capital": "Port Louis",
+            "region": "Africa",
+            "population": 1262879,
+            "language": "English"
+        },
+        {
+            "name": "Mayotte",
+            "capital": "Mamoudzou",
+            "region": "Africa",
+            "population": 226915,
+            "language": "French"
+        },
+        {
+            "name": "Morocco",
+            "capital": "Rabat",
+            "region": "Africa",
+            "population": 33337529,
+            "language": "Arabic"
+        },
+        {
+            "name": "Mozambique",
+            "capital": "Maputo",
+            "region": "Africa",
+            "population": 26423700,
+            "language": "Portuguese"
+        },
+        {
+            "name": "Namibia",
+            "capital": "Windhoek",
+            "region": "Africa",
+            "population": 2324388,
+            "language": "English"
+        },
+        {
+            "name": "Niger",
+            "capital": "Niamey",
+            "region": "Africa",
+            "population": 20715000,
+            "language": "French"
+        },
+        {
+            "name": "Nigeria",
+            "capital": "Abuja",
+            "region": "Africa",
+            "population": 186988000,
+            "language": "English"
+        },
+        {
+            "name": "R\u00e9union",
+            "capital": "Saint-Denis",
+            "region": "Africa",
+            "population": 840974,
+            "language": "French"
+        },
+        {
+            "name": "Rwanda",
+            "capital": "Kigali",
+            "region": "Africa",
+            "population": 11553188,
+            "language": "Kinyarwanda"
+        },
+        {
+            "name": "Saint Helena, Ascension and Tristan da Cunha",
+            "capital": "Jamestown",
+            "region": "Africa",
+            "population": 4255,
+            "language": "English"
+        },
+        {
+            "name": "Sao Tome and Principe",
+            "capital": "S\u00e3o Tom\u00e9",
+            "region": "Africa",
+            "population": 187356,
+            "language": "Portuguese"
+        },
+        {
+            "name": "Senegal",
+            "capital": "Dakar",
+            "region": "Africa",
+            "population": 14799859,
+            "language": "French"
+        },
+        {
+            "name": "Seychelles",
+            "capital": "Victoria",
+            "region": "Africa",
+            "population": 91400,
+            "language": "French"
+        },
+        {
+            "name": "Sierra Leone",
+            "capital": "Freetown",
+            "region": "Africa",
+            "population": 7075641,
+            "language": "English"
+        },
+        {
+            "name": "Somalia",
+            "capital": "Mogadishu",
+            "region": "Africa",
+            "population": 11079000,
+            "language": "Somali"
+        },
+        {
+            "name": "South Africa",
+            "capital": "Pretoria",
+            "region": "Africa",
+            "population": 55653654,
+            "language": "Afrikaans"
+        },
+        {
+            "name": "South Sudan",
+            "capital": "Juba",
+            "region": "Africa",
+            "population": 12131000,
+            "language": "English"
+        },
+        {
+            "name": "Sudan",
+            "capital": "Khartoum",
+            "region": "Africa",
+            "population": 39598700,
+            "language": "Arabic"
+        },
+        {
+            "name": "Swaziland",
+            "capital": "Lobamba",
+            "region": "Africa",
+            "population": 1132657,
+            "language": "English"
+        },
+        {
+            "name": "Tanzania, United Republic of",
+            "capital": "Dodoma",
+            "region": "Africa",
+            "population": 55155000,
+            "language": "Swahili"
+        },
+        {
+            "name": "Togo",
+            "capital": "Lom\u00e9",
+            "region": "Africa",
+            "population": 7143000,
+            "language": "French"
+        },
+        {
+            "name": "Tunisia",
+            "capital": "Tunis",
+            "region": "Africa",
+            "population": 11154400,
+            "language": "Arabic"
+        },
+        {
+            "name": "Uganda",
+            "capital": "Kampala",
+            "region": "Africa",
+            "population": 33860700,
+            "language": "English"
+        },
+        {
+            "name": "Western Sahara",
+            "capital": "El Aai\u00fan",
+            "region": "Africa",
+            "population": 510713,
+            "language": "Spanish"
+        },
+        {
+            "name": "Zambia",
+            "capital": "Lusaka",
+            "region": "Africa",
+            "population": 15933883,
+            "language": "English"
+        },
+        {
+            "name": "Zimbabwe",
+            "capital": "Harare",
+            "region": "Africa",
+            "population": 14240168,
+            "language": "English"
+        }
+    ]
+}
