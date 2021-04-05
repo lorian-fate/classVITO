@@ -32,17 +32,18 @@ def historical_searching():
         with open("countries.csv", "r") as countrie_file:
             csv_reader = csv.reader(countrie_file)
             list_flag = []
-            print("|------------------------|------------------------|")
-            print("|", "\t","COUNTRY","\t", "|", "\t", "POPULATION", "\t"," |")
-            print("|------------------------|------------------------|")
+            print("||-----------------------||-----------------------||")
+            print("||", "\t","COUNTRY","\t", "||", "\t", "POPULATION", "\t"," ||")
+            print("||=======================||=======================||")
             for country_in_csv_file in csv_reader:
                 list_flag.append(country_in_csv_file[-1])
                 if len(country_in_csv_file[0]) <= 5:
-                    print("|","\t",country_in_csv_file[0], "\t\t", "|", "\t", country_in_csv_file[3], "\t"," |")
-                    print("|------------------------|------------------------|")
+                    print("||","\t",country_in_csv_file[0], "\t\t", "||", "\t", country_in_csv_file[3], "\t"," ||")
+                    print("||=======================||=======================||")
+
                 elif len(country_in_csv_file[0]) >= 6:
-                    print("|","\t",country_in_csv_file[0], "\t", "|", "\t", country_in_csv_file[3], "\t"," |")
-                    print("|------------------------|------------------------|")
+                    print("||","\t",country_in_csv_file[0], "\t", "||", "\t", country_in_csv_file[3], "\t"," ||")
+                    print("||=======================||=======================||")
             
             option = input("Do you wish to download the flags of these countries (y/n):") 
             if option == 'y':
