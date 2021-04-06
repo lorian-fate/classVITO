@@ -10,11 +10,12 @@ NOMENCLATURA EN INGLÉS
 
 
 2._Sin contar la reescrituras, cuántos municipios hay en total? O lo que es lo mismo, cuántos diccionarios se agregan cada día?
-===================================================================================================================================================
 3._Obtener la TIA inicial
 4._Obtener la TIA final
+
 5._Crea una lista con valores de 1 a n siendo 1 la primer fecha y n la última
     #*Esta lista representará el eje x
+===================================================================================================================================================
 6._Crea una lista con la TIA diaria de la comunidad (Cada valor será la sumatoria de todos los municipios)
     #*Esta lista representará el eje y
 

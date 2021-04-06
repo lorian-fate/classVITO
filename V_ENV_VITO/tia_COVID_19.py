@@ -1,5 +1,6 @@
 import requests
 import json
+import datetime
 
 url = "https://datos.comunidad.madrid/catalogo/dataset/7da43feb-8d4d-47e0-abd5-3d022d29d09e/resource/\
 ead67556-7e7d-45ee-9ae5-68765e1ebf7a/download/covid19_tia_muni_y_distritos.json"
@@ -40,12 +41,38 @@ def my_REQUESTS():
 
     with open("./DATAS/covid_19.json", "w") as json_file:
         json.dump(my_json, json_file, indent=4)
-    
+
+
+def my_data():
+    with open("./DATAS/covid_19.json", "r") as json_file:
+        json_data = json.load(json_file)  
+        return json_data['datas']
+
 
 def municipality_QUANTITY():
-    with open("./DATAS/covid_19.json", "r") as json_file:
-        json_data = json.load(json_file)
-        municipalities = {municipality["municipio_distrito"] for municipality in json_data['datas']}
-        return len(municipalities)
+    return len({municipality["municipio_distrito"] for municipality in my_data()})
 
-print(municipality_QUANTITY())
+
+def get_TIA():
+    init_TIA = [tia["tasa_incidencia_acumulada_total"] for tia in my_data() if "2020/02/26" in tia["fecha_informe"]]
+    final_TIA = [tia["tasa_incidencia_acumulada_total"] for tia in my_data() if "2020/07/01" in tia["fecha_informe"]]
+    return f"The initial TIA is: {sum(init_TIA)}\nThe final TIA is: {sum(final_TIA):.2f}"
+
+
+def date_LIST():
+    my_list = sorted(list({datetime.date(int(report_date["fecha_informe"].split(" ")[0].split("/")[0]),
+                int(report_date["fecha_informe"].split(" ")[0].split("/")[1]),
+                int(report_date["fecha_informe"].split(" ")[0].split("/")[2])).
+                strftime("%Y/%m/%d") for report_date in my_data()}))
+    return len(my_list)
+
+def daily_TIA():
+    my_list = [sum([daily_tia["tasa_incidencia_acumulada_total"] for daily_tia in my_data() if date_tia in daily_tia["fecha_informe"]]) for date_tia in date_LIST()]
+    return my_list
+
+
+
+#print(municipality_QUANTITY())
+#print(get_TIA())
+#print(date_LIST())
+print(daily_TIA())
