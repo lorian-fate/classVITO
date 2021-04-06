@@ -15,16 +15,16 @@ NOMENCLATURA EN INGLÉS
 
 5._Crea una lista con valores de 1 a n siendo 1 la primer fecha y n la última
     #*Esta lista representará el eje x
-===================================================================================================================================================
+
 6._Crea una lista con la TIA diaria de la comunidad (Cada valor será la sumatoria de todos los municipios)
     #*Esta lista representará el eje y
 
-
+===================================================================================================================================================
 OOP
 1._Crea en un fichero aparte, un objeto llamado statistics
 2._Tendrá los siguiente atributos: x (list), y (list)
 3._Propiedades: n, media de x, media de y, varianza de x, varianza de y, sumatoria xy, sumatoria x^2, sumatoria y^2, sumatoria x^2y^2, covarianza,b b0
-4._Métodos: coeficiente pearson, y'
+4._Métodos: coeficiente pearson, y
 
 
 En conjunto

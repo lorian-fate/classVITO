@@ -1,0 +1,9 @@
+
+
+
+class Statistics:
+    x = []
+    y = []
+    
+
+
