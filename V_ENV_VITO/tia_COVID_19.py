@@ -38,9 +38,14 @@ def my_REQUESTS():
             })
         
 
-    with open("./DATAS/covit_19.json", "w") as json_file:
+    with open("./DATAS/covid_19.json", "w") as json_file:
         json.dump(my_json, json_file, indent=4)
     
 
+def municipality_QUANTITY():
+    with open("./DATAS/covid_19.json", "r") as json_file:
+        json_data = json.load(json_file)
+        municipalities = {municipality["municipio_distrito"] for municipality in json_data['datas']}
+        return len(municipalities)
 
-
+print(municipality_QUANTITY())

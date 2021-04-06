@@ -7,9 +7,10 @@ NOMENCLATURA EN INGLÉS
 1._Crear un json con todos los datos obtenidos en la response, de este punto en adelante, solo se consultará nuestro json
     #*Este dataset funciona de la siguiente manera, cada día que pasa se agregan todos los municipios con su nuevo valor acumulativo.
     #*Por ende, no se reescriben, se agregan (append) todos los municipios cada vez
-===================================================================================================================================================
+
 
 2._Sin contar la reescrituras, cuántos municipios hay en total? O lo que es lo mismo, cuántos diccionarios se agregan cada día?
+===================================================================================================================================================
 3._Obtener la TIA inicial
 4._Obtener la TIA final
 5._Crea una lista con valores de 1 a n siendo 1 la primer fecha y n la última
