@@ -34,7 +34,7 @@ COUNTRIES
 *Ejercicio 13: Descargar todas las imágenes en un directorio aparte
 
 *Ejercicio 14: Crear una clase país attr--> name, capital, population
-===================================================================================================================================================
+
 *Ejercicio 15: Convertir TODOS los países en un objeto y luego podamos acceder a un atributo de clase y nos indique la población total
 
 MENU TIPO: --REST Countries-- Country Region Population --> country||region --> if !country: req else: from json Search history --> lista de países --> Quiere descargar las imágenes de las banderas ? write wb:pass
