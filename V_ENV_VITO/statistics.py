@@ -62,7 +62,7 @@ class My_Statistics:
     
     @property
     def r_pearson(self):
-        return self.sum_XY / ((self.sum_X)*(self.sum_Y)**(1/2))
+        return self.sum_XY / ((self.sum_X)*(self.sum_Y))**(1/2)
 
 
 
