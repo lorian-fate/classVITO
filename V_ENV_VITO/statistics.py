@@ -56,10 +56,13 @@ class My_Statistics:
     def pred(self, value_K):
         return self.b*value_K + self.b_0
     
-
+    @property
     def covariace(self):
         return (self.sum_XY / self.constant) - self.average_X*self.average_Y
-
+    
+    @property
+    def r_pearson(self):
+        return self.sum_XY / ((self.sum_X)*(self.sum_Y)**(1/2))
 
 
 
