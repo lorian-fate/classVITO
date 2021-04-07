@@ -7,7 +7,7 @@ from progress.bar import Bar
 import time
 
 
-
+"""
 def load_function(interval):
     bar1 = Bar('Procesando:', max=100)
     for num in range(interval):
@@ -17,7 +17,7 @@ def load_function(interval):
 
 t1 = threading.Thread(target=load_function, args=(100,))
 t1.start()
-
+"""
 class Process_DATA:
     url = "https://datos.comunidad.madrid/catalogo/dataset/7da43feb-8d4d-47e0-abd5-3d022d29d09e/resource/\
 ead67556-7e7d-45ee-9ae5-68765e1ebf7a/download/covid19_tia_muni_y_distritos.json"
@@ -126,7 +126,7 @@ obj = My_Statistics(x,  y)
 """print(obj.variance_Y)
 print(obj.sum_XY)
 print(obj.sum_X_sum_Y)"""
-print(obj.pred(130))
+#print(obj.pred(130))
 print(obj.r_pearson)
 
 
