@@ -1,7 +1,7 @@
 import requests
 import json
 import datetime
-
+from statistics import My_Statistics
 
 class Process_DATA:
     url = "https://datos.comunidad.madrid/catalogo/dataset/7da43feb-8d4d-47e0-abd5-3d022d29d09e/resource/\
@@ -99,5 +99,23 @@ ead67556-7e7d-45ee-9ae5-68765e1ebf7a/download/covid19_tia_muni_y_distritos.json"
             my_Dict[date_tia] = counter
         return my_Dict
 
+def load_function(interval):
+    bar1 = Bar('Procesando:', max=100)
+    for num in range(interval):
+        time.sleep(0.01)
+        bar1.next()
+    bar1.finish()
+
+
+objp = Process_DATA()
+x = list(objp.date_LIST.keys())
+y = list(objp.daily_TIA.values())
+
+
+obj = My_Statistics(x,  y)
+"""print(obj.variance_Y)
+print(obj.sum_XY)
+print(obj.sum_X_sum_Y)"""
+print(obj.pred(130))
 
 

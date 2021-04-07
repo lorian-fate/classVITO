@@ -1,7 +1,7 @@
-from tia_COVID_19 import Process_DATA
+#from tia_COVID_19 import Process_DATA
 
 
-class Statistics:
+class My_Statistics:
     
     def __init__(self, x, y):
         self.x = x
@@ -44,14 +44,31 @@ class Statistics:
         return sum([(y-self.average_Y)**2 for y in self.y]) / self.constant
     
     @property
-    def covariance(self):
-        pass
+    def b(self):
+        return ((self.constant*self.sum_XY) - (sum(self.x)*sum(self.y))) \
+        / ((self.constant*self.sum_X) - (sum(self.x)**2))
+    
+    @property
+    def b_0(self):
+        return self.average_Y - self.b*self.average_X
+    
+    #@property
+    def pred(self, value_K):
+        return self.b*value_K + self.b_0
+    
+
+    def covariace(self):
+        return (self.sum_XY / self.constant) - self.average_X*self.average_Y
 
 
 
 
-obj = Statistics([12, 6, 7, 3, 15, 10, 18, 5],  [12, 6, 7, 3, 15, 10, 18, 5])
+
+"""obj = Statistics([2, 3, 5, 8, 9, 11, 14, 15],  [12, 6, 7, 3, 15, 10, 18, 5])
 print(obj.variance_Y)
 print(obj.sum_XY)
 print(obj.sum_X_sum_Y)
+print(obj.b)"""
 
+"""ob = Process_DATA()
+print(ob.date_tia)"""
