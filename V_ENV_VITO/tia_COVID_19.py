@@ -56,10 +56,22 @@ ead67556-7e7d-45ee-9ae5-68765e1ebf7a/download/covid19_tia_muni_y_distritos.json"
         return len({municipality["municipio_distrito"] for municipality in self.my_data})
 
 
-    def get_TIA(self):
-        init_TIA = [tia["tasa_incidencia_acumulada_total"] for tia in self.my_data if "2020/02/26" in tia["fecha_informe"]]
-        final_TIA = [tia["tasa_incidencia_acumulada_total"] for tia in self.my_data if "2020/07/01" in tia["fecha_informe"]]
-        return f"The initial TIA is: {sum(init_TIA)}\nThe final TIA is: {sum(final_TIA):.2f}"
+    def get_TIA(self):  
+        counterA, counterB = 0, 0
+        init_TIA = 0
+        final_TIA = 0
+        for tia in self.my_data:
+            if "2020/07/01" in tia["fecha_informe"]:
+                if "casos_confirmados_totales" in tia.keys():
+                    final_TIA += tia["casos_confirmados_totales"]
+                    counterA += 1
+            elif "2020/02/26" in tia["fecha_informe"]:
+                if "casos_confirmados_totales" not in tia.keys():
+                    init_TIA += 0
+                    counterB += 1      
+        return f"The initial TIA is: {init_TIA} over {counterB} municipalities\
+        \nThe final TIA is: {final_TIA} over {counterA} municipalities"
+
 
     @property
     def date_LIST(self):
@@ -67,12 +79,25 @@ ead67556-7e7d-45ee-9ae5-68765e1ebf7a/download/covid19_tia_muni_y_distritos.json"
                 int(report_date["fecha_informe"].split(" ")[0].split("/")[1]),
                 int(report_date["fecha_informe"].split(" ")[0].split("/")[2])).
                 strftime("%Y/%m/%d") for report_date in self.my_data}))
-        return my_list
+        
+        my_Dict = {counter:date_tia for counter, date_tia in enumerate(my_list, start=1)}
+        return my_Dict
+
 
     @property
     def daily_TIA(self):
-        my_list = [round(sum([daily_tia["tasa_incidencia_acumulada_total"] for daily_tia in self.my_data 
-            if date_tia in daily_tia["fecha_informe"]]), 2) for date_tia in self.date_LIST]
-        return my_list
+        my_Dict = {}
+
+        for date_tia in self.date_LIST.values():
+            counter = 0
+            for daily_tia in self.my_data:
+                if date_tia in daily_tia["fecha_informe"]:
+                    if "casos_confirmados_totales" in daily_tia.keys():
+                        counter += daily_tia["casos_confirmados_totales"]
+                    elif "casos_confirmados_totales" not in daily_tia.keys():
+                        counter += 0
+            my_Dict[date_tia] = counter
+        return my_Dict
+
 
 
