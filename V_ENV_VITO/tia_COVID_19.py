@@ -5,6 +5,8 @@ import threading
 from progress.bar import Bar
 import time
 import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+import seaborn as sns
 
 
 """
@@ -122,6 +124,7 @@ ead67556-7e7d-45ee-9ae5-68765e1ebf7a/download/covid19_tia_muni_y_distritos.json"
 objp = Process_DATA()
 x = list(objp.date_LIST.keys())
 y = list(objp.daily_TIA.values())
+#x = list(objp.daily_TIA.keys())
 
 
 
@@ -133,5 +136,25 @@ y = list(objp.daily_TIA.values())
 #obj = My_Statistics(x,  y)
 #print(obj.r_pearson)
 
-plt.plot(x, y)
-plt.show()
+
+#plt.plot(x, y)
+#plt.show()
+
+
+def graf(a, b, c):
+    c.cla()
+    sns.lineplot(a, b, ax = c)
+
+fig = plt.figure()
+gf = fig.gca()
+graf(x, y, gf)
+
+animation = FuncAnimation(fig, graf, frames=100, fargs=(gf,))
+
+
+
+from IPython.display import HTML
+# .gif necesita la librería imagemagick que puede ser instalada con !apt install imagemagick
+# animation.save('poly.gif', writer='imagemagick', fps=20); 
+animation.save('animation.mp4', writer='ffmpeg', fps=20);
+HTML(animation.to_jshtml())
