@@ -113,19 +113,25 @@ ead67556-7e7d-45ee-9ae5-68765e1ebf7a/download/covid19_tia_muni_y_distritos.json"
                         counter += 0
             my_Dict[date_tia] = counter
         return my_Dict
+    
+
+
 
 
 
 
 objp = Process_DATA()
-x = list(objp.date_LIST.keys())
-y = list(objp.daily_TIA.values())
+#x = list(objp.date_LIST.keys())
+#y = list(objp.daily_TIA.values())
+
+
+
 print(objp.date_LIST)
 print("=====================")
 print(objp.daily_TIA)
 
 
-obj = My_Statistics(x,  y)
+#obj = My_Statistics(x,  y)
 #print(obj.r_pearson)
 
 
