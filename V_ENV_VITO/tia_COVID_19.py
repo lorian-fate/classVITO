@@ -1,10 +1,10 @@
 import requests
 import json
-import datetime
 from statistics import My_Statistics
 import threading
 from progress.bar import Bar
 import time
+import matp
 
 
 """
@@ -90,23 +90,22 @@ ead67556-7e7d-45ee-9ae5-68765e1ebf7a/download/covid19_tia_muni_y_distritos.json"
 
     @property
     def date_LIST(self):
-        my_list = sorted(list({datetime.date(int(report_date["fecha_informe"].split(" ")[0].split("/")[0]),
-                int(report_date["fecha_informe"].split(" ")[0].split("/")[1]),
-                int(report_date["fecha_informe"].split(" ")[0].split("/")[2])).
-                strftime("%Y/%m/%d") for report_date in self.my_data}))
-        
+        my_list = sorted({report_date["fecha_informe"] for report_date in self.my_data})
         my_Dict = {counter:date_tia for counter, date_tia in enumerate(my_list, start=1)}
         return my_Dict
+    
 
 
     @property
     def daily_TIA(self):
         my_Dict = {}
+        #my_list = list(self.date_LIST.values())
+        #my_list.reverse()
 
         for date_tia in self.date_LIST.values():
             counter = 0
             for daily_tia in self.my_data:
-                if date_tia in daily_tia["fecha_informe"]:
+                if date_tia == daily_tia["fecha_informe"]:
                     if "casos_confirmados_totales" in daily_tia.keys():
                         counter += daily_tia["casos_confirmados_totales"]
                     elif "casos_confirmados_totales" not in daily_tia.keys():
