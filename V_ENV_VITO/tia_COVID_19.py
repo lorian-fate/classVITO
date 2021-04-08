@@ -123,10 +123,6 @@ y = list(objp.daily_TIA.values())
 
 
 obj = My_Statistics(x,  y)
-"""print(obj.variance_Y)
-print(obj.sum_XY)
-print(obj.sum_X_sum_Y)"""
-#print(obj.pred(130))
 print(obj.r_pearson)
 
 
