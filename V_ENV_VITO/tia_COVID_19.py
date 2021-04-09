@@ -5,8 +5,6 @@ import threading
 from progress.bar import Bar
 import time
 import matplotlib.pyplot as plt
-from matplotlib.animation import FuncAnimation
-import seaborn as sns
 
 
 """
@@ -20,6 +18,7 @@ def load_function(interval):
 t1 = threading.Thread(target=load_function, args=(100,))
 t1.start()
 """
+
 class Process_DATA:
     url = "https://datos.comunidad.madrid/catalogo/dataset/7da43feb-8d4d-47e0-abd5-3d022d29d09e/resource/\
 ead67556-7e7d-45ee-9ae5-68765e1ebf7a/download/covid19_tia_muni_y_distritos.json"
@@ -114,7 +113,7 @@ ead67556-7e7d-45ee-9ae5-68765e1ebf7a/download/covid19_tia_muni_y_distritos.json"
                         counter += 0
             my_Dict[date_tia] = counter
         return my_Dict
-    
+
 
 
 
@@ -141,20 +140,67 @@ y = list(objp.daily_TIA.values())
 #plt.show()
 
 
-def graf(a, b, c):
-    c.cla()
-    sns.lineplot(a, b, ax = c)
+import numpy as np
+import matplotlib.pyplot as plt
 
-fig = plt.figure()
-gf = fig.gca()
-graf(x, y, gf)
+#plt.axis([0, 127, 0, 7000])
+#plt.ion()
 
-animation = FuncAnimation(fig, graf, frames=100, fargs=(gf,))
+xs = [0, 0]
+ys = [1, 1]
+
+for i, j in zip(x, y):
+    #y = np.random.random()
+    xs[0] = xs[1]
+    ys[0] = ys[1]
+    xs[1] = i
+    ys[1] = j
+    plt.plot(xs, ys)
+    plt.pause(0.5)
 
 
 
-from IPython.display import HTML
-# .gif necesita la librería imagemagick que puede ser instalada con !apt install imagemagick
-# animation.save('poly.gif', writer='imagemagick', fps=20); 
-animation.save('animation.mp4', writer='ffmpeg', fps=20);
-HTML(animation.to_jshtml())
+"""
+#*=========================================================================
+#*Creación de una serie de figuras
+import numpy as np
+import matplotlib.pyplot as plt
+for i in range(2, 17):
+    x = np.arange(1, i, .1)
+    y = np.exp(x)
+    plt.plot(x, y)
+    plt.savefig("./figures/figure{0:03d}.png".format(i))
+    plt.clf()
+
+#*Creación final del video
+import glob
+file_list = sorted(glob.glob('./figures/*.png'))
+
+import moviepy.editor as mpy
+fps = 3
+clip = mpy.ImageSequenceClip(file_list, fps=fps)
+clip.write_gif('movie.gif')
+"""
+"""
+import numpy as np
+import matplotlib.pyplot as plt
+
+#plt.axis([0, 100, 0, 1])
+plt.axis([0, 100, 0, 500])
+plt.ion()
+
+xs = [0, 0]
+ys = [1, 1]
+
+
+#for i in range(100):
+for i, j in zip(range(100), range(0, 500, 5)):
+    #y = np.random.random()
+    xs[0] = xs[1]
+    ys[0] = ys[1]
+    xs[1] = i
+    ys[1] = j
+    plt.plot(xs, ys)
+    #plt.plot(i, j)
+    plt.pause(0.1)
+"""
