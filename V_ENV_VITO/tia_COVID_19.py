@@ -2,7 +2,7 @@ import requests
 import json
 from statistics import My_Statistics
 import threading
-from progress.bar import Bar
+#from progress.bar import Bar
 import time
 import matplotlib.pyplot as plt
 
@@ -92,6 +92,10 @@ ead67556-7e7d-45ee-9ae5-68765e1ebf7a/download/covid19_tia_muni_y_distritos.json"
     @property
     def date_LIST(self):
         my_list = sorted({report_date["fecha_informe"] for report_date in self.my_data})
+        
+        for item for self.my_data:
+            yield item
+
         my_Dict = {counter:date_tia for counter, date_tia in enumerate(my_list, start=1)}
         return my_Dict
     
@@ -127,9 +131,9 @@ y = list(objp.daily_TIA.values())
 
 
 
-#print(objp.date_LIST)
-#print("=====================")
-#print(objp.daily_TIA)
+print(objp.date_LIST)
+print("=====================")
+print(objp.daily_TIA)
 
 
 #obj = My_Statistics(x,  y)
@@ -139,7 +143,7 @@ y = list(objp.daily_TIA.values())
 #plt.plot(x, y)
 #plt.show()
 
-
+"""
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -157,7 +161,7 @@ for i, j in zip(x, y):
     ys[1] = j
     plt.plot(xs, ys)
     plt.pause(0.5)
-
+"""
 
 
 """
