@@ -30,3 +30,7 @@ func = get_sqr(l)
 
 print(func)
 print(hex(id(func)))
+
+value = "victor"
+result = 'is a string' if type(value) == str else "is a number" if type(value) == int else "is another thing"
+print(result)
