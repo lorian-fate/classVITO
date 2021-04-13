@@ -84,10 +84,8 @@ ead67556-7e7d-45ee-9ae5-68765e1ebf7a/download/covid19_tia_muni_y_distritos.json"
     @property
     def daily_TIA(self):
         my_Dict = {}
-        #my_list = list(self.date_LIST.values())
-        #my_list.reverse()
 
-        for date_tia in self.date_LIST.values():
+        for number_tia, date_tia in self.date_LIST.items():
             counter = 0
             for daily_tia in self.my_data:
                 if date_tia == daily_tia["fecha_informe"]:
@@ -95,7 +93,7 @@ ead67556-7e7d-45ee-9ae5-68765e1ebf7a/download/covid19_tia_muni_y_distritos.json"
                         counter += daily_tia["casos_confirmados_totales"]
                     elif "casos_confirmados_totales" not in daily_tia.keys():
                         counter += 0
-            my_Dict[date_tia] = counter
+            my_Dict[number_tia] = counter
         return my_Dict
 
 
@@ -105,13 +103,12 @@ ead67556-7e7d-45ee-9ae5-68765e1ebf7a/download/covid19_tia_muni_y_distritos.json"
 
 
 objp = Process_DATA()
-x = list(objp.date_LIST.keys())
+x = list(objp.daily_TIA.keys())
 y = list(objp.daily_TIA.values())
 #x = list(objp.daily_TIA.keys())
 
 
 
-print(objp.date_LIST)
 print("=====================")
 print(objp.daily_TIA)
 
