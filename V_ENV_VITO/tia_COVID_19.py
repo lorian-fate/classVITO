@@ -20,52 +20,32 @@ t1.start()
 """
 
 class Process_DATA:
+
+
+    """
+    JSON 2:
+        Escribir un nuevo json
+        Obtener los confirmados totales por 
+    semana
+        Crear una gráfica con los mismos
+        Calcular R pearson
+        Calcular B
+
+    """
     url = "https://datos.comunidad.madrid/catalogo/dataset/7da43feb-8d4d-47e0-abd5-3d022d29d09e/resource/\
 ead67556-7e7d-45ee-9ae5-68765e1ebf7a/download/covid19_tia_muni_y_distritos.json"
 
 
     def my_REQUESTS(self):
-        my_request = requests.get(url).json()
-        my_json = {'datas':[]}
-    
-        for response in my_request['data']:
-            if "casos_confirmados_totales" and "casos_confirmados_ultimos_14dias" not in list(response.keys()):
-                my_json['datas'].append({
-                    "municipio_distrito": response["municipio_distrito"],
-                    "codigo_geometria": response["codigo_geometria"],
-                    "tasa_incidencia_acumulada_ultimos_14dias": response["tasa_incidencia_acumulada_ultimos_14dias"],
-                    "tasa_incidencia_acumulada_total": response["tasa_incidencia_acumulada_total"],
-                    "fecha_informe": response["fecha_informe"]
-                })
-            elif "casos_confirmados_ultimos_14dias" not in list(response.keys()):
-                my_json['datas'].append({
-                    "municipio_distrito": response["municipio_distrito"],
-                    "codigo_geometria": response["codigo_geometria"],
-                    "tasa_incidencia_acumulada_ultimos_14dias": response["tasa_incidencia_acumulada_ultimos_14dias"],
-                    "tasa_incidencia_acumulada_total": response["tasa_incidencia_acumulada_total"],
-                    "casos_confirmados_totales": response["casos_confirmados_totales"],
-                    "fecha_informe": response["fecha_informe"]
-                })
-            else:
-                my_json['datas'].append({
-                    "municipio_distrito": response["municipio_distrito"],
-                    "codigo_geometria": response["codigo_geometria"],
-                    "tasa_incidencia_acumulada_ultimos_14dias": response["tasa_incidencia_acumulada_ultimos_14dias"],
-                    "tasa_incidencia_acumulada_total": response["tasa_incidencia_acumulada_total"],
-                    "casos_confirmados_totales": response["casos_confirmados_totales"],
-                    "casos_confirmados_ultimos_14dias": response["casos_confirmados_ultimos_14dias"],
-                    "fecha_informe": response["fecha_informe"]
-                })
-        
-
+        my_request = requests.get(self.url).json()
         with open("./DATAS/covid_19.json", "w") as json_file:
-            json.dump(my_json, json_file, indent=4)
+            json.dump(my_request, json_file, indent=4)
 
     @property
     def my_data(self):
-        with open("./DATAS/covid_19.json", "r") as json_file:
+        with open("./DATAS/covid_19_new.json", "r") as json_file:
             json_data = json.load(json_file)  
-            return json_data['datas']
+            return json_data['data']
 
     @property
     def municipality_QUANTITY(self):
@@ -93,8 +73,8 @@ ead67556-7e7d-45ee-9ae5-68765e1ebf7a/download/covid19_tia_muni_y_distritos.json"
     def date_LIST(self):
         my_list = sorted({report_date["fecha_informe"] for report_date in self.my_data})
         
-        for item for self.my_data:
-            yield item
+        #for item for self.my_data:
+        #    yield item
 
         my_Dict = {counter:date_tia for counter, date_tia in enumerate(my_list, start=1)}
         return my_Dict
@@ -136,20 +116,21 @@ print("=====================")
 print(objp.daily_TIA)
 
 
-#obj = My_Statistics(x,  y)
-#print(obj.r_pearson)
+obj = My_Statistics(x,  y)
+print(obj.r_pearson)
+print(obj.b)
 
 
-#plt.plot(x, y)
-#plt.show()
+plt.plot(x, y)
+plt.show()
 
-"""
+
 import numpy as np
 import matplotlib.pyplot as plt
 
 #plt.axis([0, 127, 0, 7000])
 #plt.ion()
-
+"""
 xs = [0, 0]
 ys = [1, 1]
 
@@ -160,7 +141,7 @@ for i, j in zip(x, y):
     xs[1] = i
     ys[1] = j
     plt.plot(xs, ys)
-    plt.pause(0.5)
+    plt.pause(0.2)
 """
 
 
