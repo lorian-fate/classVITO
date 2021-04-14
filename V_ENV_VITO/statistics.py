@@ -18,22 +18,28 @@ class My_Statistics:
     @property
     def average_Y(self):
         return sum(self.y) / self.constant
-    
+        
+    #*======================================================================
     @property
     def sum_XY(self):
-        return sum([x*y for x, y in zip(self.x, self.y)])
+        #return sum([x*y for x, y in zip(self.x, self.y)])
+        return sum(map((lambda x, y: x*y), self.x, self.y))
     
     @property
     def sum_X(self):
-        return sum([x**2 for x in self.x])
+        #return sum([x**2 for x in self.x])
+        return sum(map((lambda x: x**2), self.x))
     
     @property
     def sum_Y(self):
-        return sum([y**2 for y in self.y])
+        #return sum([y**2 for y in self.y])
+        return sum(map((lambda y: y**2), self.y))
     
     @property
     def sum_X_sum_Y(self):
-        return sum([((x**2)*(y**2)) for x, y in zip(self.x, self.y)])
+        #return sum([((x**2)*(y**2)) for x, y in zip(self.x, self.y)])
+        return sum(map((lambda x, y: (x**2)*(y**2)), self.x, self.y))
+
 
     @property
     def variance_X(self):
@@ -67,11 +73,11 @@ class My_Statistics:
 
 
 
-"""obj = Statistics([2, 3, 5, 8, 9, 11, 14, 15],  [12, 6, 7, 3, 15, 10, 18, 5])
-print(obj.variance_Y)
+obj = My_Statistics([2, 3, 5, 8, 9, 11, 14, 15],  [12, 6, 7, 3, 15, 10, 18, 5])
+#print(obj.variance_Y)
 print(obj.sum_XY)
 print(obj.sum_X_sum_Y)
-print(obj.b)"""
+#print(obj.b)
 
 """ob = Process_DATA()
 print(ob.date_tia)"""
