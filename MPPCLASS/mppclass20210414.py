@@ -25,6 +25,6 @@ print(list(w))
 #? Función filter
 
 w1 = filter((lambda x: x if x%2==0 else None), range(10))
-print(list(w1))
+#print(list(w1))
 
 #? Funcion 
