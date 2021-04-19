@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 
 
 
+
 class Unamed_CLASS:
 
     def my_REQUEST(self):
@@ -27,8 +28,8 @@ resource/d12f9a6d-aa9c-404f-82a8-9dcaaffebc28/download/uniones_hecho_parejas.jso
 
     @property
     def separe_sample(self):
-        sample1 = filter((lambda x: x["inscripcion_año"] <= "2005"), self.get_data)
-        sample2 = filter((lambda x: x["inscripcion_año"] > "2005"), self.get_data)
+        sample1 = filter((lambda x: x["inscripcion_año"] <= "2010"), self.get_data)
+        sample2 = filter((lambda x: x["inscripcion_año"] > "2010"), self.get_data)
         return [sample1, sample2]
 
 
@@ -110,11 +111,22 @@ def graphic(obj):
     plt.pie(couples, labels=names, autopct="%0.1f %%")
     plt.show()
 
+def graphic1(obj):
+    my_items = obj.proportion_by_YEAR
+    year = [i for i, year in enumerate(my_items, start=1)]
+    homo_couple = [homo['homosexual'] for homo in my_items]
+    hetero_couple = [hetero['heterosexual'] for hetero in my_items]
+    labels_name = ['year', 'homosexual']
+    plt.plot(year, homo_couple, label=labels_name)
+    #plt.plot(year, hetero_couple)
+    plt.show()
+
+
 
 obj = Unamed_CLASS()
 print(obj.proportion_by_YEAR)
 #print(len(obj.get_data))
-#graphic(obj)
+graphic1(obj)
 
 
 
