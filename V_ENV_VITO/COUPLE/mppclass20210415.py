@@ -101,7 +101,7 @@ resource/d12f9a6d-aa9c-404f-82a8-9dcaaffebc28/download/uniones_hecho_parejas.jso
                                         'heterosexual': round(porcentage_hetero, 2),
                                         'homosexual': round(porcentage_homo, 2)
                                     })
-        return porcentage_couple_by_year, cound
+        return porcentage_couple_by_year
 
 
 def graphic(obj):
@@ -121,19 +121,45 @@ def graphic1(obj):
     hetero_couple = [hetero['heterosexual'] for hetero in my_items]
     labels_name = ['year', 'homosexual']
     plt.plot(year, homo_couple, label=labels_name)
-    #plt.plot(year, hetero_couple)
+    plt.plot(year, hetero_couple)
     plt.show()
 
+def z_funct(obj):
+    total_couples1 = sum([int(num_couples["num_inscripciones"]) for num_couples in obj.separe_sample[0]])
+    total_couples2 = sum([int(num_couples["num_inscripciones"]) for num_couples in obj.separe_sample[1]])
+    homo_proportion1 = round((sum([int(num_couples["num_inscripciones"]) for num_couples in obj.separe_sample[0] 
+                        if num_couples["pareja_tipo"] != "heterosexual"])*100)/total_couples1, 2)/100
+    homo_proportion2 = round((sum([int(num_couples["num_inscripciones"]) for num_couples in obj.separe_sample[1] 
+                        if num_couples["pareja_tipo"] != "heterosexual"])*100)/total_couples2, 2)/100
+    p1, p2, n1, n2 = homo_proportion1, homo_proportion2, total_couples1, total_couples2
+    P = round(((n1*p1) + (n2*p2))/(n1 + n2), 2)
+    p1_p2_sus = round(p2 - p1, 2)
+    denominator = (P*(1 - P)*((1/n1)+(1/n2)))
+    Z = round((p2 - p1)/((P*(1-P)*((1/n1)+(1/n2)))**(1/2)), 2)
+    return Z
+
+def broken_couples(couple_list):
+    broken = 0
+    for couple in couple_list:
+        broken += int(couple["num_inscripciones_cancelacion"])
+    return ((broken*100)/sum([int(couple["num_inscripciones"]) for couple in couple_list]))/100
+
+
+def proportion_broken_couples(breken):
+    return 
 
 
 obj = Unamed_CLASS()
 #print(obj.my_REQUEST())
-print(obj.proportion_by_YEAR)
+#print(obj.proportion_by_YEAR)
 #print(len(obj.get_data))
 #graphic1(obj)
 
-
-
+print(z_funct(obj))
+#fun = broken_couples(obj.separe_sample[1])
+#print(fun)
+for i in obj.get_data:
+    print(i)
 
 
 
