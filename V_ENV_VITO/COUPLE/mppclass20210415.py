@@ -78,6 +78,7 @@ resource/d12f9a6d-aa9c-404f-82a8-9dcaaffebc28/download/uniones_hecho_parejas.jso
         list_years = sorted({year["inscripcion_año"] for year in self.get_data})
         proportion_couple_by_year = {}
         counter, counter1 = 0, 0
+        cound = 0
         for year in list_years:
             for sample in self.get_data:
                 if sample["inscripcion_año"] == year:
@@ -85,6 +86,8 @@ resource/d12f9a6d-aa9c-404f-82a8-9dcaaffebc28/download/uniones_hecho_parejas.jso
                         counter += int(sample["num_inscripciones"])
                     elif "homosexual" in sample["pareja_tipo"]:
                         counter1 += int(sample["num_inscripciones"])
+            coun = counter + counter1
+            cound += coun
             proportion_couple_by_year[year] = {"heterosexual": counter, "homosexual": counter1}
             counter, counter1 = 0, 0
         
@@ -98,7 +101,7 @@ resource/d12f9a6d-aa9c-404f-82a8-9dcaaffebc28/download/uniones_hecho_parejas.jso
                                         'heterosexual': round(porcentage_hetero, 2),
                                         'homosexual': round(porcentage_homo, 2)
                                     })
-        return porcentage_couple_by_year
+        return porcentage_couple_by_year, cound
 
 
 def graphic(obj):
@@ -124,9 +127,10 @@ def graphic1(obj):
 
 
 obj = Unamed_CLASS()
+#print(obj.my_REQUEST())
 print(obj.proportion_by_YEAR)
 #print(len(obj.get_data))
-graphic1(obj)
+#graphic1(obj)
 
 
 
