@@ -4,9 +4,6 @@ import itertools
 import matplotlib.pyplot as plt
 
 
-
-
-
 class Unamed_CLASS:
 
     def my_REQUEST(self):
@@ -131,6 +128,7 @@ def z_funct(obj):
                         if num_couples["pareja_tipo"] != "heterosexual"])*100)/total_couples1, 2)/100
     homo_proportion2 = round((sum([int(num_couples["num_inscripciones"]) for num_couples in obj.separe_sample[1] 
                         if num_couples["pareja_tipo"] != "heterosexual"])*100)/total_couples2, 2)/100
+    
     p1, p2, n1, n2 = homo_proportion1, homo_proportion2, total_couples1, total_couples2
     P = round(((n1*p1) + (n2*p2))/(n1 + n2), 2)
     p1_p2_sus = round(p2 - p1, 2)
@@ -138,28 +136,44 @@ def z_funct(obj):
     Z = round((p2 - p1)/((P*(1-P)*((1/n1)+(1/n2)))**(1/2)), 2)
     return Z
 
+
 def broken_couples(couple_list):
-    broken = 0
     for couple in couple_list:
-        broken += int(couple["num_inscripciones_cancelacion"])
-    return ((broken*100)/sum([int(couple["num_inscripciones"]) for couple in couple_list]))/100
+        yield int(couple["num_inscripciones_cancelacion"])
 
 
-def proportion_broken_couples(breken):
-    return 
+def proportion_broken_couples(broken):
+    total = sum([int(couple["num_inscripciones"]) for couple in broken])
+    broken_coup = sum(list(broken_couples(broken)))
+    return ((broken_coup*100)/total)/100
+
+
 
 
 obj = Unamed_CLASS()
-#print(obj.my_REQUEST())
-#print(obj.proportion_by_YEAR)
-#print(len(obj.get_data))
-#graphic1(obj)
+fun = proportion_broken_couples(obj.get_data)
+print(fun)
 
-print(z_funct(obj))
-#fun = broken_couples(obj.separe_sample[1])
-#print(fun)
-for i in obj.get_data:
-    print(i)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
