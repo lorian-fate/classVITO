@@ -66,7 +66,7 @@ class My_Bet:
 
     @property
     def my_Validator(self):
-        x, y = 0, 0
+        x = 0
         for i in range(self.amount_to_bet*100):
             x += 0.01
             y = self.amount_to_bet - x
@@ -105,7 +105,7 @@ def main():
     detail_command = {
         'makebet': 'makebet league_name name_first_team name_second_team \
 profit_local profit_draw profit_visitor amount_to_bet:"op"',
-        'show': "any utility for this command yet"
+        'show': "+recommended bets\n +previous bets\n +all bets"
     }
     command_list = {
         'listcommand': 'show all allowed commands',
@@ -114,6 +114,7 @@ profit_local profit_draw profit_visitor amount_to_bet:"op"',
         'show': 'take more argument and show that the argument ask',
         'help': "goes after a command and show how use a command in detail. e.g 'makebet help'",
         'clean': "clean your screen"
+
         }
     print("=================================================================")
     print("================== WELCOME TO YOUR BET APP ======================")
@@ -127,14 +128,14 @@ profit_local profit_draw profit_visitor amount_to_bet:"op"',
                 exit_command = False
             elif command_line.lower() == 'clean':
                 system("cls")
-            elif command_line.lower() == 'show':
-                print("Any utility for this command yet")
             elif command_line.lower() == 'listcommand' or command_line.lower() == 'help':
                 for command, utility in command_list.items():
                     if len(command) <= 6:
                         print(command.upper(),"\t\t",utility)
                     else:
                         print(command.upper(),"\t",utility)
+            elif command_line.lower() in detail_command.keys():
+                print(f"The command '{command_line}' need more parameters. Type it with 'help' to more information")
             else:
                 print(f"'{command_line}' isn't a inner command of this program")
         else:
@@ -145,23 +146,49 @@ profit_local profit_draw profit_visitor amount_to_bet:"op"',
                     print(f"'{keyword_list[0]}' isn't a inner command of this program")
 
             else:
-                if (len(keyword_list) == 8 or len(keyword_list) == 7) and (keyword_list[0] in detail_command.keys()):
-                    if len(keyword_list) == 8:
-                        obj = My_Bet(keyword_list[1], (keyword_list[2], keyword_list[3]), 
-                        keyword_list[4], keyword_list[5], keyword_list[6], keyword_list[7])
-                        if (type(float(keyword_list[4])) == float) and (type(float(keyword_list[6])) == float) \
-                        and (type(float(keyword_list[6])) == float):
-                            if keyword_list[0].lower() == 'makebet':
-                                obj.my_BETS()
-                    elif len(keyword_list) == 7:
-                        obj = My_Bet(keyword_list[1], (keyword_list[2], keyword_list[3]), 
-                        keyword_list[4], keyword_list[5], keyword_list[6])
-                        if (type(float(keyword_list[4])) == float) and (type(float(keyword_list[6])) == float) \
-                        and (type(float(keyword_list[6])) == float):
-                            if keyword_list[0].lower() == 'makebet':
-                                obj.my_BETS()
-                else:
-                    print("missing arguments")
-
+                if keyword_list[0].lower() == 'makebet':
+                    if (len(keyword_list) == 8 or len(keyword_list) == 7) and (keyword_list[0] in detail_command.keys()):
+                        if len(keyword_list) == 8:
+                            obj = My_Bet(keyword_list[1], (keyword_list[2], keyword_list[3]), 
+                            keyword_list[4], keyword_list[5], keyword_list[6], keyword_list[7])
+                            if (type(float(keyword_list[4])) == float) and (type(float(keyword_list[6])) == float) \
+                            and (type(float(keyword_list[6])) == float):
+                                if keyword_list[0].lower() == 'makebet':
+                                    obj.my_BETS()
+                        elif len(keyword_list) == 7:
+                            obj = My_Bet(keyword_list[1], (keyword_list[2], keyword_list[3]), 
+                            keyword_list[4], keyword_list[5], keyword_list[6])
+                            if (type(float(keyword_list[4])) == float) and (type(float(keyword_list[6])) == float) \
+                            and (type(float(keyword_list[6])) == float):
+                                if keyword_list[0].lower() == 'makebet':
+                                    obj.my_BETS()
+                    else:
+                        print("missing arguments")
+                elif keyword_list[0].lower() == 'show':
+                    if keyword_list[1].lower() == 'recommended':
+                        with open("./BETS_DATAS/recomended_Bets.json") as my_File:
+                            my_json = json.load(my_File)
+                            print("DATE", "\t\t", "LOCAL TEAM", "\t\t", "VISITOR TEAM", "\t\t", "LOCAL WINER", "\t\t", 
+                            "VISITOR WINER", "\t\t", "DRAW")
+                            print("============================================================\
+=========================================================")
+                            for my_data in my_json["data"]:
+                                if len(my_data["local_team"]) >= 14 and len(my_data["visitor_team"]) >= 14:
+                                    print(my_data["date"], "\t", my_data["local_team"], "\t", my_data["visitor_team"], 
+                                    "\t", my_data["local_winer"], "\t\t\t", my_data["visitor_winer"], "\t\t\t", my_data["draw"])
+                                elif len(my_data["local_team"]) >= 14:
+                                    print(my_data["date"], "\t", my_data["local_team"], "\t", my_data["visitor_team"], 
+                                    "\t\t", my_data["local_winer"], "\t\t\t", my_data["visitor_winer"], "\t\t\t", my_data["draw"])
+                                elif len(my_data["visitor_team"]) >= 14:
+                                    print(my_data["date"], "\t", my_data["local_team"], "\t\t", my_data["visitor_team"], 
+                                    "\t", my_data["local_winer"], "\t\t\t", my_data["visitor_winer"], "\t\t\t", my_data["draw"])
+                                else:
+                                    print(my_data["date"], "\t", my_data["local_team"], "\t\t", my_data["visitor_team"], 
+                                    "\t\t", my_data["local_winer"], "\t\t\t", my_data["visitor_winer"], "\t\t\t", my_data["draw"])
+                    
+                    elif keyword_list[1].lower() == 'previous':
+                        pass
+                    elif keyword_list[1].lower() == 'all':
+                        pass
 
 main()
