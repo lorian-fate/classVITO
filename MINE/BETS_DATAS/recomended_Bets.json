@@ -1,0 +1,31 @@
+{
+    "data": [
+        {
+            "league": "spain",
+            "date": "22-04-2021",
+            "local_team": "Atletico_Madrid",
+            "visitor_team": "Huesca",
+            "local_winer": "1.40",
+            "visitor_winer": "8.00",
+            "draw": "4.50"
+        },
+        {
+            "league": "portugal",
+            "date": "22-04-2021",
+            "local_team": "Oporto",
+            "visitor_team": "Vitoria_de_G",
+            "local_winer": "1.36",
+            "visitor_winer": "8.00",
+            "draw": "4.75"
+        },
+        {
+            "league": "spain",
+            "date": "22-04-2021",
+            "local_team": "Barcelona",
+            "visitor_team": "Getafe",
+            "local_winer": "1.22",
+            "visitor_winer": "13.00",
+            "draw": "6.50"
+        }
+    ]
+}

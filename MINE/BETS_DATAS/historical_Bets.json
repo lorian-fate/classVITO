@@ -1,0 +1,103 @@
+{
+    "data": [
+        {
+            "league": "spain",
+            "date": "21-04-2021",
+            "local_team": "ELCHE",
+            "visitor_team": "REAL VALLADOLID",
+            "local_winer": 2.9,
+            "visitor_winer": 2.7,
+            "draw": 3.0
+        },
+        {
+            "league": "spain",
+            "date": "21-04-2021",
+            "local_team": "CADIZ",
+            "visitor_team": "REAL MADRID",
+            "local_winer": 9.0,
+            "visitor_winer": 1.37,
+            "draw": 4.75
+        },
+        {
+            "league": "spain",
+            "date": "22-04-2021",
+            "local_team": "Atletico_Madrid",
+            "visitor_team": "Huesca",
+            "local_winer": "1.40",
+            "visitor_winer": "8.00",
+            "draw": "4.50"
+        },
+        {
+            "league": "spain",
+            "date": "22-04-2021",
+            "local_team": "Real_Sociedad",
+            "visitor_team": "Celta_De_Vigo",
+            "local_winer": "1.83",
+            "visitor_winer": "4.20",
+            "draw": "3.75"
+        },
+        {
+            "league": "spain",
+            "date": "22-04-2021",
+            "local_team": "Granada",
+            "visitor_team": "Eibar",
+            "local_winer": "2.40",
+            "visitor_winer": "3.20",
+            "draw": "3.10"
+        },
+        {
+            "league": "spain",
+            "date": "22-04-2021",
+            "local_team": "Barcelona",
+            "visitor_team": "Getafe",
+            "local_winer": "1.20",
+            "visitor_winer": "13.00",
+            "draw": "6.50"
+        },
+        {
+            "league": "italy",
+            "date": "22-04-2021",
+            "local_team": "Napoles",
+            "visitor_team": "Lazio",
+            "local_winer": "2.05",
+            "visitor_winer": "3.50",
+            "draw": "3.60"
+        },
+        {
+            "league": "england",
+            "date": "22-04-2021",
+            "local_team": "Liverpool",
+            "visitor_team": "Newcastle_United",
+            "local_winer": "1.25",
+            "visitor_winer": "11.00",
+            "draw": "6.0"
+        },
+        {
+            "league": "portugal",
+            "date": "22-04-2021",
+            "local_team": "Oporto",
+            "visitor_team": "Vitoria_de_G",
+            "local_winer": "1.36",
+            "visitor_winer": "8.00",
+            "draw": "4.75"
+        },
+        {
+            "league": "portugal",
+            "date": "22-04-2021",
+            "local_team": "Portimonense",
+            "visitor_team": "Benfica",
+            "local_winer": "6.50",
+            "visitor_winer": "1.45",
+            "draw": "4.33"
+        },
+        {
+            "league": "spain",
+            "date": "22-04-2021",
+            "local_team": "Barcelona",
+            "visitor_team": "Getafe",
+            "local_winer": "1.22",
+            "visitor_winer": "13.00",
+            "draw": "6.50"
+        }
+    ]
+}
