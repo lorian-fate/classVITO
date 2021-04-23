@@ -98,6 +98,33 @@
             "local_winer": "1.22",
             "visitor_winer": "13.00",
             "draw": "6.50"
+        },
+        {
+            "league": "england",
+            "date": "23-04-2021",
+            "local_team": "Arsenal",
+            "visitor_team": "Everton",
+            "local_winer": "2.05",
+            "visitor_winer": "3.40",
+            "draw": "3.60"
+        },
+        {
+            "league": "france",
+            "date": "23-04-2021",
+            "local_team": "State_de_Reims",
+            "visitor_team": "O._Marsella",
+            "local_winer": "3.50",
+            "visitor_winer": "3.40",
+            "draw": "2.10"
+        },
+        {
+            "league": "holland",
+            "date": "23-04-2021",
+            "local_team": "Willem_II",
+            "visitor_team": "RKC_Waalwijk",
+            "local_winer": "1.85",
+            "visitor_winer": "3.60",
+            "draw": "3.80"
         }
     ]
 }

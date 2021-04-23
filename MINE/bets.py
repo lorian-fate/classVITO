@@ -1,7 +1,7 @@
 import math
 import json
 from datetime import datetime
-from os import system
+
 
 """
     #! al prescindir del valor más alto te arriegas a perder la apuesta
@@ -10,7 +10,33 @@ from os import system
     #! menos apuestas no más
 """
 
-class My_Bet:
+class My_Bet_APP:
+    detail_command = {
+        'makebet': {
+            '+league_name': "type a league's name", 
+            '+name_first_team': "type the first team's name",
+            '+name_second_team': "type the second team's name",
+            '+profit_local': "type the profit correspondent to the local team",
+            '+profit_draw': "type the profit correspondent to a draw",
+            '+profit_visitor': "type the profit correspondent to the visitor team",
+            '+amount_to_bet':"type the amount to bet. Is an optional option",
+            'e.g':"makebet league_name local_team visitor_team profit_local profit_draw profit_visitro amount_to_bet"
+            },
+        'show': {
+            "+recommended bets": "show all recommended bets saved",
+            "+dangerous bets": "show the last five bet tried",
+            "+all bets": "show bets's history"
+            }
+    }
+    command_list = {
+        'listcommand': 'show all allowed commands',
+        'makebet':'allow make a new bet',
+        'exit': 'exits the program',
+        'show': 'take more argument and show that the argument ask',
+        'help': "goes after a command and show how use a command in detail. e.g 'makebet help'",
+        'clean': "clean your screen"
+
+        }
 
     def __init__(self, league=None, team_tuple=None, local_winer=None, 
     draw=None, visitor_winer=None, amount_to_bet=10):
@@ -22,9 +48,9 @@ class My_Bet:
         self.amount_to_bet = int(amount_to_bet)
 
 
-    @property
-    def save_Data(self):
-        directory = "./BETS_DATAS/historical_Bets.json"
+    
+    def save_Data(self, file_name):
+        directory = f"./BETS_DATAS/{file_name}.json"
         my_file = open(directory)
         my_data = json.load(my_file)
         my_file.close()
@@ -42,26 +68,6 @@ class My_Bet:
             with open(directory, "w") as json_File:
                 json.dump(my_data, json_File, indent=4)
 
-
-    @property
-    def save_Recomended_Bets(self):
-        directory = "./BETS_DATAS/recomended_Bets.json"
-        my_file = open(directory)
-        my_data = json.load(my_file)
-        my_file.close()
-        my_dictionary = {
-                    'league': self.league,
-                    'date': datetime.today().strftime("%d-%m-%Y"),
-                    'local_team': self.team_tuple[0],
-                    'visitor_team': self.team_tuple[1],
-                    'local_winer': self.local_winer,
-                    'visitor_winer': self.visitor_winer,
-                    'draw': self.draw
-            }
-        if my_dictionary not in my_data["data"]:
-            my_data["data"].append(my_dictionary)
-            with open(directory, "w") as json_File:
-                json.dump(my_data, json_File, indent=4)
 
 
     @property
@@ -74,52 +80,53 @@ class My_Bet:
             yield my_tuple
 
 
+    def amount_calculation(self, value_list, message, my_obj, json_name):
+        my_obj.save_Data("historical_Bets")
+        value_to_use = []
+        value_to_use.insert(0, value_list.pop(value_list.index(min(value_list))))
+        value_to_use.insert(0, value_list.pop(value_list.index(min(value_list))))
+        value1 = value_to_use[0]
+        value2 = value_to_use[1]
+        for my_tuple in list(self.my_Validator):
+            if (my_tuple[0]*value1 > self.amount_to_bet) and (my_tuple[1]*value2 > self.amount_to_bet):
+                my_profit1 = (my_tuple[0]*value1) - self.amount_to_bet
+                my_profit2 = (my_tuple[1]*value2) - self.amount_to_bet
+                my_sustraction = round((my_profit2 - my_profit1), 3)
+                if -0.035 <= my_sustraction <= 0.035:
+                    my_obj.save_Data(json_name)
+                    print(f"bet {my_tuple[0]} to {value1} and your profit will be {round(my_profit1, 2)}\
+                            \nbet {my_tuple[1]} to {value2} and your profit will be {round(my_profit2, 2)}\
+                            \nNote:{message}")
+
+
     def my_BETS(self):
+        my_obj = My_Bet_APP(self.league, self.team_tuple, self.local_winer, 
+                        self.visitor_winer, self.draw, self.amount_to_bet )
         value_list = [float(self.local_winer), float(self.visitor_winer), float(self.draw)]
         validation = ((max(value_list)*100)/sum(value_list))/100
         
         if validation >= 0.55:
-            self.save_Data
-            value_to_use = []
-            value_to_use.insert(0, value_list.pop(value_list.index(min(value_list))))
-            value_to_use.insert(0, value_list.pop(value_list.index(min(value_list))))
-            value1 = value_to_use[0]
-            value2 = value_to_use[1]
-            for my_tuple in list(self.my_Validator):
-                if (my_tuple[0]*value1 > self.amount_to_bet) and (my_tuple[1]*value2 > self.amount_to_bet):
-                    my_profit1 = (my_tuple[0]*value1) - self.amount_to_bet
-                    my_profit2 = (my_tuple[1]*value2) - self.amount_to_bet
-                    my_sustraction = round((my_profit2 - my_profit1), 3)
-                    if -0.035 <= my_sustraction <= 0.035:
-                        self.save_Recomended_Bets
-                        print(f"bet {my_tuple[0]} to {value1} and your profit will be {round(my_profit1, 2)}\
-                                \nbet {my_tuple[1]} to {value2} and your profit will be {round(my_profit2, 2)}")
+            mess = "Bet recommended"
+            my_obj.amount_calculation(value_list, mess, my_obj, "recomended_Bets")
+
+        elif 0.40 <= validation <= 0.55:
+            mess = "Dangerous Bet"
+            my_obj.amount_calculation(value_list, mess, my_obj, "dangerous_Bets")
         else:
-            self.save_Data
+            my_obj.save_Data("historical_Bets")
             print("Bet not recommended")
 
 
-
+"""
 def main():
     exit_command = True
-    detail_command = {
-        'makebet': 'makebet league_name name_first_team name_second_team \
-profit_local profit_draw profit_visitor amount_to_bet:"op"',
-        'show': "+recommended bets\n +previous bets\n +all bets"
-    }
-    command_list = {
-        'listcommand': 'show all allowed commands',
-        'makebet':'allow make a new bet',
-        'exit': 'exits the program',
-        'show': 'take more argument and show that the argument ask',
-        'help': "goes after a command and show how use a command in detail. e.g 'makebet help'",
-        'clean': "clean your screen"
+    detail_command = My_Bet_APP.detail_command 
+    command_list = My_Bet_APP.command_list
 
-        }
     print("=================================================================")
     print("================== WELCOME TO YOUR BET APP ======================")
     print("=================================================================")
-    print("Type 'listcommand' to show allowed commands")
+    print("Type 'listcommand' to show allowed commands or 'help' ")
     while exit_command:
         command_line = input(">>>> ")
         keyword_list = command_line.split(" ")
@@ -140,10 +147,18 @@ profit_local profit_draw profit_visitor amount_to_bet:"op"',
                 print(f"'{command_line}' isn't a inner command of this program")
         else:
             if keyword_list[1].lower() == 'help':
-                if keyword_list[0] in detail_command.keys():
-                    print(F"so you can use '{keyword_list[0]}'\n'{detail_command[keyword_list[0]]}'") 
+                if len(keyword_list) == 2:
+                    if keyword_list[0] in detail_command.keys():
+                        print(F"so you can use '{keyword_list[0]}'")
+                        for my_command, utility in detail_command[keyword_list[0]].items():
+                            if len(my_command) <= 14:
+                                print(my_command.upper(), "\t\t", utility)
+                            else:
+                                print(my_command.upper(), "\t", utility)
+                    else:
+                        print(f"'{keyword_list[0]}' isn't a inner command of this program")
                 else:
-                    print(f"'{keyword_list[0]}' isn't a inner command of this program")
+                    print("command error")
 
             else:
                 if keyword_list[0].lower() == 'makebet':
@@ -155,6 +170,7 @@ profit_local profit_draw profit_visitor amount_to_bet:"op"',
                             and (type(float(keyword_list[6])) == float):
                                 if keyword_list[0].lower() == 'makebet':
                                     obj.my_BETS()
+
                         elif len(keyword_list) == 7:
                             obj = My_Bet(keyword_list[1], (keyword_list[2], keyword_list[3]), 
                             keyword_list[4], keyword_list[5], keyword_list[6])
@@ -164,8 +180,9 @@ profit_local profit_draw profit_visitor amount_to_bet:"op"',
                                     obj.my_BETS()
                     else:
                         print("missing arguments")
+
                 elif keyword_list[0].lower() == 'show':
-                    if keyword_list[1].lower() == 'recommended':
+                    if (keyword_list[1].lower() == 'recommended') and (keyword_list[2].lower() == 'bets'):
                         with open("./BETS_DATAS/recomended_Bets.json") as my_File:
                             my_json = json.load(my_File)
                             print("DATE", "\t\t", "LOCAL TEAM", "\t\t", "VISITOR TEAM", "\t\t", "LOCAL WINER", "\t\t", 
@@ -192,3 +209,13 @@ profit_local profit_draw profit_visitor amount_to_bet:"op"',
                         pass
 
 main()
+
+
+"""
+
+
+
+
+
+
+
