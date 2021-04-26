@@ -23,8 +23,31 @@ class Defibrellator:
     def dea_Quantity(self):
         return len(self.get_data)
         
+    @property
+    def postal_CODE_M30(self):
+        m30_postal_CODE = [
+                            "28029", "28036", "28046", "28039", "28016", "28020", 
+                            "28002", "28003", "28015", "28010", "28006", "28028", 
+                            "28008", "28004", "28001", "280013", "28014", "28009", 
+                            "28007", "28012", "28005", "28045"
+                            ]
+        my_lambda = filter((lambda parameter: parameter["direccion_codigo_postal"] in m30_postal_CODE), self.get_data)
+        return len(list(my_lambda))
+    
 
+    @property
+    def public_defibrillator(self):
+        for defibrillator in self.get_data:
+            if defibrillator["tipo_titularidad"] == "Público":
+                yield defibrillator
+    
+
+    @property
+    def private_defibrillator(self):
+        for defibrillator in self.get_data:
+            if defibrillator["tipo_titularidad"] == "Privado":
+                yield defibrillator
 
 
 obj = Defibrellator()
-print(obj.dea_Quantity)
+print(obj.postal_CODE_M30)
