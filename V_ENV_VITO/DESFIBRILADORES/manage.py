@@ -2,6 +2,7 @@ import json
 from mppclass20210426 import Defibrillator
 from user import User
 import utm
+from geopy.geocoders import Nominatim
 
 
 
@@ -46,16 +47,32 @@ class Manage:
                 print("|================================|=======================================================================================|")
 
 
+    #* This function convert UTM coordinates into latitude, longitude and viceversa
     @classmethod
-    def utm_TO_gps(self, latd, long):
-        pass
+    def utm_TO_gps(self, latitude_DEA, longitude_DEA, zone_number=30, zone_letter="T"):
+        
+        #*Convert a (latitude, longitude) tuple into an UTM coordinate:
+        #my_loc = utm.from_latlon(latitude_DEA, longitude_DEA)
+
+        #* Convert an UTM coordinate into a (latitude, longitude) tuple:
+        my_loc = utm.to_latlon(latitude_DEA, longitude_DEA, zone_number, zone_letter)
+        return my_loc
+
+
+    #* This function convert coordinates into address
+    @classmethod
+    def get_Address(self, lat_D, long_D):
+        my_coordinates = Manage.utm_TO_gps(lat_D, long_D)
+        geolocator = Nominatim(user_agent="my-application")
+        my_ADDRESS = geolocator.reverse(str(my_coordinates[0]), str(my_coordinates[1]))
+        return my_ADDRESS.address
 
 
     @classmethod
     def get_distance(self, user_point):
         my_dic = {}
         for my_DEA in self.obj_defibrillator.get_data:
-            dea_POSITION = self.obj_defibrillator.search_BYDISTANCE(user_point, [float(my_DEA["direccion_coordenada_x"]), 
+            dea_POSITION = self.obj_defibrillator.search_BYDISTANCE(user_point, [float(my_DEA["direccion_coordenada_x"]),
                                                                                 float(my_DEA["direccion_coordenada_y"])])
             my_dic[dea_POSITION] = my_DEA
         
@@ -88,9 +105,8 @@ class Manage:
                     user_position = input("Type the user position: ")
                     user_point = User(float(user_position.split(",")[0]), float(user_position.split(",")[1]))
                     my_DEA = Manage.get_distance(user_point)
-                    
-                    print(f"the closest dea is {round(my_DEA[0], 2)} meters away and his coordinates are \
-                    \n({my_DEA[1]['direccion_coordenada_x']}, {my_DEA[1]['direccion_coordenada_y']})")
+                    transform_TO_gps = Manage.get_Address(float(my_DEA[1]['direccion_coordenada_x']), float(my_DEA[1]['direccion_coordenada_y']))
+                    print(transform_TO_gps)
 
                 elif option == '3':
                     exit_command = False
@@ -119,4 +135,6 @@ class Manage:
             print("Incorrect data")
         
 
-        
+obj = Manage()
+#print(obj.utm_TO_gps(443232.5935741307, 4489909.409591898))
+print(obj.get_Address(443232.5935741307, 4489909.409591898))
