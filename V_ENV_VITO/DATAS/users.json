@@ -1,12 +1,20 @@
 {
     "users": [
         {
+            "name": "admin",
+            "password": "4dm1n"
+        },
+        {
             "name": "Takeshi",
             "password": "Tx33(Vs)"
         },
         {
-            "name": "vito",
-            "password": "elcrack"
+            "name": "Kandjigard",
+            "password": "V3redion"
+        },
+        {
+            "name": "Drax",
+            "password": "Thelethal3"
         }
     ]
 }
