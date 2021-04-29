@@ -3,6 +3,8 @@ from mppclass20210426 import Defibrillator
 from user import User
 import utm
 from geopy.geocoders import Nominatim
+from pygeocoder import Geocoder
+import webbrowser
 
 
 
@@ -32,6 +34,7 @@ class Manage:
         else:
             print("This user already exist")
 
+
     @classmethod
     def print_data(self, data):
         print("|================================|=======================================================================================|")
@@ -51,7 +54,7 @@ class Manage:
     @classmethod
     def utm_TO_gps(self, latitude_DEA, longitude_DEA, zone_number=30, zone_letter="T"):
         
-        #*Convert a (latitude, longitude) tuple into an UTM coordinate:
+        #*Convert a (latitude, longitude) tuple into an UTM coordinates:
         #my_loc = utm.from_latlon(latitude_DEA, longitude_DEA)
 
         #* Convert an UTM coordinate into a (latitude, longitude) tuple:
@@ -60,12 +63,34 @@ class Manage:
 
 
     #* This function convert coordinates into address
+    """
     @classmethod
     def get_Address(self, lat_D, long_D):
         my_coordinates = Manage.utm_TO_gps(lat_D, long_D)
         geolocator = Nominatim(user_agent="my-application")
         my_ADDRESS = geolocator.reverse(str(my_coordinates[0]), str(my_coordinates[1]))
         return my_ADDRESS.address
+    
+
+
+    @classmethod
+    def get_Address(self, lat_D, long_D):
+        my_coordinates = Manage.utm_TO_gps(lat_D, long_D)
+        my_ADDRESS = Geocoder.reverse_geocode(my_coordinates[0], my_coordinates[1])
+        return my_ADDRESS[0]
+    """
+
+    @classmethod
+    def show_UBICATIOM(self, url_D):
+        return webbrowser.open(url_D, new=2, autoraise=True)
+
+
+    @classmethod
+    def get_UBICATION(self, user_lat, user_long, lat_D, long_D):
+        #my_ubication = "https://www.google.com/maps/search/?api=1&query={},{}".format(lat_D, long_D)
+        my_ubication = f"https://www.google.com/maps/dir/{user_lat},+{user_long}/{lat_D},{long_D}"
+        
+        return my_ubication
 
 
     @classmethod
@@ -105,8 +130,12 @@ class Manage:
                     user_position = input("Type the user position: ")
                     user_point = User(float(user_position.split(",")[0]), float(user_position.split(",")[1]))
                     my_DEA = Manage.get_distance(user_point)
-                    transform_TO_gps = Manage.get_Address(float(my_DEA[1]['direccion_coordenada_x']), float(my_DEA[1]['direccion_coordenada_y']))
-                    print(transform_TO_gps)
+                    transform_TO_gps = Manage.utm_TO_gps(float(my_DEA[1]['direccion_coordenada_x']), float(my_DEA[1]['direccion_coordenada_y']))
+                    transform_TO_gps_user = Manage.utm_TO_gps(float(user_position.split(",")[0]), float(user_position.split(",")[1]))
+                    my_ubication = Manage.get_UBICATION(transform_TO_gps_user[0], transform_TO_gps_user[1], transform_TO_gps[0], transform_TO_gps[1])
+                    print(f"The closest DEA is at this ubication {my_ubication}")
+                    
+                    print(Manage.show_UBICATIOM(my_ubication))
 
                 elif option == '3':
                     exit_command = False
@@ -135,6 +164,10 @@ class Manage:
             print("Incorrect data")
         
 
-obj = Manage()
-#print(obj.utm_TO_gps(443232.5935741307, 4489909.409591898))
-print(obj.get_Address(443232.5935741307, 4489909.409591898))
+#obj = Manage()
+#print(obj.utm_TO_gps(40.425227,-3.668582))
+
+"""
+f"https://www.google.com/maps/search/?api=1&query={},{}"
+f"https://www.google.com/maps/dir/{user_lat},+{user_long}/{nearest_dea.latitude},{nearest_dea.longitude}"
+"""
