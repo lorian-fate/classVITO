@@ -5,11 +5,13 @@ import utm
 from geopy.geocoders import Nominatim
 from pygeocoder import Geocoder
 import webbrowser
+from crud import My_CRUD
 
 
 
 class Manage:
     obj_defibrillator = Defibrillator()
+    obj_crud = My_CRUD()
 
     @property
     def get_data(self):
@@ -153,19 +155,18 @@ class Manage:
             while exit_command:
                 option = input("1._ADD \n2._MODIFY \n3._DELETE \n4._EXIT\nSelect an option: ")
                 if option == '1':
-                    print("ADD")
+                    self.obj_crud.add_DEA()
                 elif option == '2':
-                    print("MODIFY")
+                    self.obj_crud.modify_DEA()
                 elif option == '3':
-                    print("DELET")
+                    self.obj_crud.delete_DEA()
                 elif option == '4':
                     exit_command = False
         else:
             print("Incorrect data")
         
 
-#obj = Manage()
-#print(obj.utm_TO_gps(40.425227,-3.668582))
+
 
 """
 f"https://www.google.com/maps/search/?api=1&query={},{}"
