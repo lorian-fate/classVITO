@@ -8,32 +8,57 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
     <title>FIND Your DEA</title>
     <style>
+        table {
+            width:100%;
+            }
         table, th, td {
             border: 1px solid black;
             border-collapse: collapse;
-        }
-        </style>
+            }
+        table.center {
+            margin-left: auto; 
+            margin-right: auto;
+            }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            }
+        #t01 tr:nth-child(even) {
+            background-color: #eee;
+            }
+        #t01 tr:nth-child(odd) {
+            background-color: #fff;
+            }
+        #t01 th {
+            background-color: black;
+            color: white;
+            }
+    </style>
 </head>
 <body>
     <h1 style="color:brown; text-align: center;">ALL AVAILABLE DEA</h1>
     
-        <table style="width:100%">
+        <table id="t01">
             <tr>
+                <th>ID</th>
                 <th>CODIGO DEA</th>
                 <th>DIRECCIÓN UBICACION</th>
                 <th>DIRECCIÓN PORTAL</th>
                 <th>HORARIO ACCESO</th>
-                <th>COORDENADA X</th>
-                <th>COORDENADA X</th>
+                <th>LINK</th>
+                <!--<th>COORDENADA X</th>
+                <th>COORDENADA X</th>-->
             </tr>
             {% for dea in my_dea %}
             <tr>
+                <td>{{dea.id}}</td>
                 <td>{{dea.codigo_dea}}</td>
                 <td>{{dea.direccion_ubicacion}}</td>
                 <td>{{dea.direccion_portal_numero}}</td>
                 <td>{{dea.horario_acceso}}</td>
-                <td>{{dea.x_utm}}</td>
-                <td>{{dea.x_utm}}</td>
+                <td><a href="{% url 'my_map' %}">click here</a></td>
+                <!--<td>{{dea.x_utm}}</td>
+                <td>{{dea.x_utm}}</td>-->
             </tr>
             {% endfor %}
         </table>

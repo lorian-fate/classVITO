@@ -1,4 +1,3 @@
-from user import User
 from manage import Manage
 
 
@@ -14,4 +13,5 @@ def menu():
         elif option == "3": my_manage.admin()
         elif option == '4':
             exit_command = False
+
 

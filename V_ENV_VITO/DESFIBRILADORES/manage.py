@@ -1,6 +1,5 @@
 import json
 from mppclass20210426 import Defibrillator
-from user import User
 import utm
 from geopy.geocoders import Nominatim
 from pygeocoder import Geocoder
@@ -104,7 +103,6 @@ class Manage:
             my_dic[dea_POSITION] = my_DEA
         
         minimun_distance = min(list(my_dic.keys()))
-
         return [minimun_distance, my_dic[minimun_distance]]
     
     
@@ -128,10 +126,12 @@ class Manage:
                     code = input("Type the code: ")
                     my_DEA = self.obj_defibrillator.search_BYCODE(code)
                     Manage.print_data(my_DEA)
+                
                 elif option == '2':
                     user_position = input("Type the user position: ")
                     user_point = User(float(user_position.split(",")[0]), float(user_position.split(",")[1]))
                     my_DEA = Manage.get_distance(user_point)
+
                     transform_TO_gps = Manage.utm_TO_gps(float(my_DEA[1]['direccion_coordenada_x']), float(my_DEA[1]['direccion_coordenada_y']))
                     transform_TO_gps_user = Manage.utm_TO_gps(float(user_position.split(",")[0]), float(user_position.split(",")[1]))
                     my_ubication = Manage.get_UBICATION(transform_TO_gps_user[0], transform_TO_gps_user[1], transform_TO_gps[0], transform_TO_gps[1])
