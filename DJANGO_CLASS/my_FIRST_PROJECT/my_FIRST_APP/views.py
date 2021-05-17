@@ -25,6 +25,7 @@ def home(request):
     my_dea = Dea.objects.filter(codigo_dea=dea_code)
     return render(request, "my_FIRST_APP/index.html", {"my_dea": my_dea})
 
+
 def my_map(request):
     more_D = Dea.objects.all()
     dea_pos = get_distance(more_D)[0]
