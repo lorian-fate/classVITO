@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse, redirect
 from .models import Dea
 from .get_DEA import get_distance
 
@@ -23,7 +23,14 @@ def home(request):
     #dea_and_user_position = [get_distance(more_D)[0], get_distance(more_D)[1]]
 
     my_dea = Dea.objects.filter(codigo_dea=dea_code)
-    return render(request, "my_FIRST_APP/index.html", {"my_dea": my_dea})
+
+    dea_pos = get_distance(more_D)[0]
+    user_pos = get_distance(more_D)[1]
+
+    my_url  = f"https://www.google.com/maps/dir/{user_pos[0]},+{user_pos[1]}/{dea_pos[0]},{dea_pos[1]}"
+
+
+    return render(request, "my_FIRST_APP/index.html", {"my_dea": my_dea, "my_url": my_url})
 
 
 def my_map(request):
@@ -32,7 +39,8 @@ def my_map(request):
     user_pos = get_distance(more_D)[1]
 
     my_url  = f"https://www.google.com/maps/dir/{user_pos[0]},+{user_pos[1]}/{dea_pos[0]},{dea_pos[1]}"
-    return render(request, my_url)
+    #return render(request, "my_FIRST_APP/index.html", my_url)
+    return redirect(my_url)
 
 #print(get_distance())
 

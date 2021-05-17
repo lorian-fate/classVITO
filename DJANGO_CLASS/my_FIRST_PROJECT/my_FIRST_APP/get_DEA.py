@@ -13,12 +13,13 @@ def utm_TO_gps(latitude_DEA, longitude_DEA, zone_number=30, zone_letter="T"):
     my_loc = utm.to_latlon(latitude_DEA, longitude_DEA, zone_number, zone_letter)
     return my_loc
 
-
+#*C:\Users\ta010\Documents\MY_CODE\classMPP\classVITO\DJANGO_CLASS\my_FIRST_PROJECT>python
 def get_distance(list_DEA):
     user_point = (443142.7, 4474998.8)
-    directory = "c:\LORIAN\classVITO\DJANGO_CLASS\my_FIRST_PROJECT\my_FIRST_APP\defibrillator.json"
-    my_json = open(directory, encoding="utf8")
-    my_data = json.load(my_json)["data"]
+    #directory = "C:\Users\ta010\Documents\MY_CODE\classMPP\classVITO\DJANGO_CLASS\my_FIRST_PROJECT\my_FIRST_APP\defibrillator.json"
+    
+    #my_json = open(directory, encoding="utf8")
+    #my_data = json.load(my_json)["data"]
     my_dic = {}
 
     #more_DEA = [m_dea for m_dea in list_DEA]
