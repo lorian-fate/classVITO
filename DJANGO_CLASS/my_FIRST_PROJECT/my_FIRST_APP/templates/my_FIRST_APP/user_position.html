@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% load static %}
+        <script src="{% static '/index.js' %}" defer></script>
+    </head>
+    <body>
+        <form action="/" method="post">
+            {% csrf_token%}
+            <input type="text" name="lat" id="lat" style="display:none ;">
+            <input type="text" name="long" id="long" style="display: none;">
+            <button type="submit">submit</button>
+        </form>
+    </body>
+</html>

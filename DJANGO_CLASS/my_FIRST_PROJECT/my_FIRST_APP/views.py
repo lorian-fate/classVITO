@@ -34,5 +34,11 @@ def my_map(request):
     my_url  = f"https://www.google.com/maps/dir/{user_pos[0]},+{user_pos[1]}/{dea_pos[0]},{dea_pos[1]}"
     return render(request, my_url)
 
-#print(get_distance())
+
+
+def user_ubication(request):
+    if request.method == "POST":
+        print(request.POST)
+        lat_long = [float(request.POST['lat']), float(request.POST['long'])] 
+    return render(request, "my_FIRST_APP/user_position.html")
 
