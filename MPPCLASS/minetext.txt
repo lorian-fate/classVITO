@@ -1,0 +1,31 @@
+BBVA: 5.05
+operación de compra
+apertura => 099.00% --> 4.99 || 5.01
+oocierre => 100.95% --> 5.04 
+
+operacion de venta
+apertura => 100.50% --> 5.08 || 5.10
+oocierre => 099.40% --> 5.04
+
+====================================
+CAIXABANK: 2.83
+operación de compra
+apertura => 099.00% --> 2.80 || 2.82
+oocierre => 101.40% --> 2.84
+
+operación de venta
+apertura => 101.50% --> 2.88 || 2.10
+oocierre => 099.00% --> 2.85
+
+====================================
+SANTANDER: 3.33
+operación de compra
+apertura => 099.20% --> 3.30 || 3.32
+oocierre => 101.40% --> 3.35
+
+operacón de venta
+apertura => 101.00% --> 3.37 || 3.39
+oocierre => 099.00% --> 3.33
+
+
+C3x(B1l0b)L0p3z45Umu

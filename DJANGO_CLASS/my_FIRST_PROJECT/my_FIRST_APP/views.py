@@ -11,28 +11,34 @@ def home(request):
 """
     
 
-#def closest_DEA(request):
 def home(request):
-    #my_ubication = ()
     more_D = Dea.objects.all()
-    #print(get_distance(more_D)[3])
-    #print(more_D[0].codigo_dea)
+    
+    if request.method == "POST":
+        lat = request.POST["lat"]
+        lng = request.POST["long"]
+        user_point = (float(lat), float(lng))
+        print(user_point)
+        dea_code = get_distance(more_D, user_point)
 
-    dea_code = get_distance(more_D)[3]
-    dea_code = dea_code.codigo_dea
-    #dea_and_user_position = [get_distance(more_D)[0], get_distance(more_D)[1]]
+        my_dea = Dea.objects.filter(codigo_dea=dea_code[2].codigo_dea)
+        dea_pos = dea_code[0]
 
-    my_dea = Dea.objects.filter(codigo_dea=dea_code)
-    return render(request, "my_FIRST_APP/index.html", {"my_dea": my_dea})
-
+        
+        my_url  = f"https://www.google.com/maps/dir/{lat},+{lng}/{dea_pos[0]},{dea_pos[1]}"
+        return render(request, "my_FIRST_APP/index.html", {"my_dea": my_dea, "my_url":my_url})
+    #return render(request, "my_FIRST_APP/index.html")
 
 def my_map(request):
     more_D = Dea.objects.all()
     dea_pos = get_distance(more_D)[0]
     user_pos = get_distance(more_D)[1]
 
-    my_url  = f"https://www.google.com/maps/dir/{user_pos[0]},+{user_pos[1]}/{dea_pos[0]},{dea_pos[1]}"
-    return render(request, my_url)
+    if request.method == "POST":
+        lat = request.POST["lat"]
+        long = request.POST["long"]
+        my_url  = f"https://www.google.com/maps/dir/{user_pos[0]},+{user_pos[1]}/{dea_pos[0]},{dea_pos[1]}"
+        return render(request, my_url)
 
 
 
