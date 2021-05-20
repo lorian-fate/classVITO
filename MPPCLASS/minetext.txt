@@ -1,7 +1,7 @@
 BBVA: 5.05
 operación de compra
 apertura => 099.00% --> 4.99 || 5.01    AJUSTE => 098.50% --> 4.97 || 4.99
-oocierre => 100.95% --> 5.04 
+oocierre => 100.95% --> 5.04                              --> 5.02
 
 operacion de venta
 apertura => 100.50% --> 5.08 || 5.10
