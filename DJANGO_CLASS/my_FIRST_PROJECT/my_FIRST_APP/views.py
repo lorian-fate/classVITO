@@ -4,14 +4,14 @@ from .get_DEA import get_distance
 
 # Create your views here.
 
-"""
-def home(request):
-    my_dea = Dea.objects.all()
-    return render(request, "my_FIRST_APP/index.html", {"my_dea": my_dea})
-"""
-    
 
 def home(request):
+    my_dea = Dea.objects.all()
+    return render(request, "my_FIRST_APP/search.html", {"my_dea": my_dea})
+
+    
+
+def closestDEA(request):
     more_D = Dea.objects.all()
     
     if request.method == "POST":
@@ -24,10 +24,10 @@ def home(request):
         my_dea = Dea.objects.filter(codigo_dea=dea_code[2].codigo_dea)
         dea_pos = dea_code[0]
 
-        
         my_url  = f"https://www.google.com/maps/dir/{lat},+{lng}/{dea_pos[0]},{dea_pos[1]}"
         return render(request, "my_FIRST_APP/index.html", {"my_dea": my_dea, "my_url":my_url})
-    #return render(request, "my_FIRST_APP/index.html")
+
+
 
 def my_map(request):
     more_D = Dea.objects.all()
