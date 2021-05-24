@@ -1,0 +1,11 @@
+{% extends "my_FIRST_APP/home.html" %}
+{% load static %}
+
+{% block content %} 
+</head>
+        <ol class="list-group list-group-numbered">
+            {% for dea in my_dea %}
+            <li class="list-group-item">{{dea.direccion_ubicacion}}</li>
+            {% endfor %}
+        </ol>
+{% endblock %}

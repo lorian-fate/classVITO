@@ -1,4 +1,4 @@
-<!--<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -35,19 +35,18 @@
             }
     </style>
 </head>
-<body>-->
-{% extends "my_FIRST_APP/home.html" %}
-{% load static %}
-
-{% block content %} 
-    
+<body>
+    <ul class="nav justify-content-center" style="padding: .5%; background-color: rgb(11, 15, 15);">
+        <li class="nav-item">
+            <a class="nav-link active" style="color: #eee;" aria-disabled="false" href="{% url 'home' %}">Home</a>
+        </li>
+    </ul>
+    <div class="container" style="padding: 1%;">
         <table id="t01">
             <tr>
                 <th>ID</th>
                 <th>CODIGO DEA</th>
                 <th>DIRECCIÓN UBICACION</th>
-                <th>DIRECCIÓN PORTAL</th>
-                <th>HORARIO ACCESO</th>
                 <th>LINK</th>
             </tr>
             {% for dea in my_dea %}
@@ -55,11 +54,9 @@
                 <td>{{dea.id}}</td>
                 <td>{{dea.codigo_dea}}</td>
                 <td>{{dea.direccion_ubicacion}}</td>
-                <td>{{dea.direccion_portal_numero}}</td>
-                <td>{{dea.horario_acceso}}</td>
                 <td><a href="{{my_url}}">click here</a></td>
             </tr>
             {% endfor %}
         </table>
-    
-{% endblock %}
+    </div>
+</body>
