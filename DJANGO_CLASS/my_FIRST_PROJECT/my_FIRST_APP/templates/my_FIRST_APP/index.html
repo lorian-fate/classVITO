@@ -1,5 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'my_FIRST_APP/home.html' %}
+
+{% block content %}
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -35,12 +36,6 @@
             }
     </style>
 </head>
-<body>
-    <ul class="nav justify-content-center" style="padding: .5%; background-color: rgb(11, 15, 15);">
-        <li class="nav-item">
-            <a class="nav-link active" style="color: #eee;" aria-disabled="false" href="{% url 'home' %}">Home</a>
-        </li>
-    </ul>
     <div class="container" style="padding: 1%;">
         <table id="t01">
             <tr>
@@ -59,4 +54,5 @@
             {% endfor %}
         </table>
     </div>
-</body>
+
+{% endblock %}

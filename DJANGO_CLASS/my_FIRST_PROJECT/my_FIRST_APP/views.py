@@ -7,7 +7,7 @@ from .get_DEA import get_distance
 
 def home(request):
     my_dea = Dea.objects.all()
-    return render(request, "my_FIRST_APP/search.html", {"my_dea": my_dea})
+    return render(request, "my_FIRST_APP/home.html", {"my_dea": my_dea})
 
 
 def list_DEA(request):
@@ -15,7 +15,7 @@ def list_DEA(request):
     return render(request, "my_FIRST_APP/index.html", {"my_dea": my_dea})
     
 
-def closestDEA(request):
+def closest_DEA(request):
     more_D = Dea.objects.all()
     
     if request.method == "POST":
@@ -33,8 +33,6 @@ def closestDEA(request):
 
 
 
-
-
 def my_map(request):
     more_D = Dea.objects.all()
     dea_pos = get_distance(more_D)[0]
@@ -49,8 +47,8 @@ def my_map(request):
 
 
 def user_ubication(request):
-    if request.method == "POST":
-        print(request.POST)
-        lat_long = [float(request.POST['lat']), float(request.POST['long'])] 
-    return render(request, "my_FIRST_APP/user_position.html")
+    return render(request, "my_FIRST_APP/search.html")
 
+
+def log_user(request):
+    return render(request, "my_FIRST_APP/userform.html")

@@ -2,7 +2,7 @@
 import utm
 import json
 import geocoder
-
+import heapq
 
 
 def utm_TO_gps(latitude_DEA, longitude_DEA, zone_number=30, zone_letter="T"):
@@ -17,11 +17,6 @@ def utm_TO_gps(latitude_DEA, longitude_DEA, zone_number=30, zone_letter="T"):
         my_loc = utm.to_latlon(latitude_DEA, longitude_DEA, zone_number, zone_letter)
         return my_loc
     
-        
-
-    
-    
-
 
 def get_distance(list_DEA, user_point):
     directory = "c:\LORIAN\classVITO\DJANGO_CLASS\my_FIRST_PROJECT\my_FIRST_APP\defibrillator.json"
@@ -29,7 +24,7 @@ def get_distance(list_DEA, user_point):
     my_data = json.load(my_json)["data"]
     my_dic = {}
 
-    #more_DEA = [m_dea for m_dea in list_DEA]
+
     print(user_point)
     user_S_coordinates = utm_TO_gps(user_point[0], user_point[1])
 
@@ -43,35 +38,9 @@ def get_distance(list_DEA, user_point):
     dea_S_coordinates = utm_TO_gps(float(closest_DD.x_utm), float(closest_DD.y_utm))
     return [dea_S_coordinates, minimun_distance, closest_DD]
 
-    """
-    for my_DEA in my_data:
-        dea_POSITION = search_BYDISTANCE(user_point, [float(my_DEA["direccion_coordenada_x"]),
-                                                    float(my_DEA["direccion_coordenada_y"])])
-        my_dic[dea_POSITION] = my_DEA
-    
-    minimun_distance = min(list(my_dic.keys()))
-    closest_D = my_dic[minimun_distance]
-    user_S_coordinates = utm_TO_gps(float(closest_D["direccion_coordenada_x"]), float(closest_D["direccion_coordenada_y"]))
-    return [user_S_coordinates, minimun_distance, closest_D, closest_DD]
-    """
-    
     
 
 def search_BYDISTANCE(obj_user, B):
     x_DEA, y_DEA = obj_user[0], obj_user[1]
     x_USER, y_USER = B[0], B[1]
     return ((x_USER - x_DEA)**2 + (y_USER - y_DEA)**2)**0.5
-
-
-"""
-g = geocoder.ip("me")
-print(g.latlng)
-
-print(get_distance())
-
-
-window.navigator.geolocation.getCurrentPosition((position) => {
-    console.log(position.coords)
-})
-
-"""
