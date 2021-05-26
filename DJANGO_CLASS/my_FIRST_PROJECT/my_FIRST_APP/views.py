@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from .models import Dea
 from .get_DEA import get_distance
+from django.core import serializers
+from django.http.response import JsonResponse
 
 # Create your views here.
 
@@ -51,4 +53,35 @@ def user_ubication(request):
 
 
 def log_user(request):
-    return render(request, "my_FIRST_APP/userform.html")
+    return render(request, "my_FIRST_APP/login.html")
+
+
+def my_api(request):
+    my_data = Dea.objects.all()
+    print(type(my_data))
+    my_json = [
+        {"codigo_Dea": dea.codigo_dea,
+        "direccion_ubicacion": dea.direccion_ubicacion,
+        "direccion_portal_numero": dea.direccion_portal_numero,
+        "horario_acceso": dea.horario_acceso,
+        "x_utm": dea.x_utm,
+        "y_utm": dea.y_utm
+        } for dea in my_data
+    ]
+    return JsonResponse({"data":  my_json})
+
+def solo_dea(request, codigo):
+    my_dea = Dea.objects.filter(codigo_dea=codigo)
+    if my_dea.count():
+        print(my_dea.count())
+        return JsonResponse({"dea": {
+            "codigo_Dea": my_dea[0].codigo_dea,
+            "direccion_ubicacion": my_dea[0].direccion_ubicacion,
+            "direccion_portal_numero": my_dea[0].direccion_portal_numero,
+            "horario_acceso": my_dea[0].horario_acceso,
+            "x_utm": my_dea[0].x_utm,
+            "y_utm": my_dea[0].y_utm
+        }})
+    else:
+        return JsonResponse({"data": "non existent dea code"})
+    

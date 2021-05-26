@@ -10,5 +10,7 @@ urlpatterns = [
     
     #path('sss', views.my_map, name="my_map"),
     path('user/', views.user_ubication, name="user_pos"),
-    path('log/', views.log_user, name="log_user")
+    path('log/', views.log_user, name="log_user"),
+    path("api/", views.my_api),
+    path('api/<codigo>/', views.solo_dea),
 ]
