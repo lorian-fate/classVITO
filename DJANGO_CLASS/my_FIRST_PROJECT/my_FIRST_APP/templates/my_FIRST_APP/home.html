@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    {% load static %}
+    <link href="{% static 'my_FIRST_APP/home.css' %}" rel="stylesheet">
+</head>
+<body>
+    <header id="myhead">
+        <h1>FIND THE NEAREST DEA HERE</h1>
+    </header>
+    <div>
+        <div id="all-dea">
+            <a href="{% url 'alldea' %}"><input type="button" value="all available DEA"></a>
+        </div>
+        <div id="dea">
+            <a href="{% url 'closestDEA' %}"><input type="button" value="closest DEA"></a>
+        </div>
+    </div>
+    <footer id="myfooter">
+        <p>provided by cice students's</p>
+    </footer>
+</body>
+</html>

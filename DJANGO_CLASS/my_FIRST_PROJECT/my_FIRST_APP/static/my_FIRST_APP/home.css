@@ -1,0 +1,56 @@
+
+
+
+
+body{
+    background-image: url(dea.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-attachment: fixed;
+}
+#myhead{
+    position: fixed;
+    background-color: rgba(255, 255, 255, 0.212);
+    height: 100px;
+    padding-top: 10px;
+    top: 10px;
+    width: 96%;
+    margin: 23px;
+}
+#myhead h1{
+    text-align: center;
+}
+#myfooter{
+    margin-top: 400px;
+    background-color: rgba(238, 238, 238, 0.603);
+    height: 50px;
+}
+#myfooter p{
+    color: rgb(0, 0, 0);
+    text-align: center;
+    padding-top: 10px;
+}
+#all-dea{
+    width: 400px;
+    margin: auto;
+    margin-top: 300px;
+}
+#all-dea a input{
+    background-color: rgba(98, 188, 230, 0.664);
+    width: 400px;
+    height: 100px;
+    border-radius: 50px;
+    font-size: 1.8em;
+}
+#dea{
+    width: 200px;
+    margin: auto;
+    margin-top: 30px;
+}
+#dea input{
+    background-color: rgba(97, 233, 97, 0.664);
+    width: 200px;
+    height: 50px;
+    border-radius: 50px;
+    font-size: 1.5em;
+}

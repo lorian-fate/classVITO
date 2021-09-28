@@ -4,15 +4,17 @@ from .get_DEA import get_distance
 
 # Create your views here.
 
-"""
+
+
 def home(request):
+    return render(request, "my_FIRST_APP/home.html")
+
+def allDEA(request):
     my_dea = Dea.objects.all()
     return render(request, "my_FIRST_APP/index.html", {"my_dea": my_dea})
-"""
-    
 
-#def closest_DEA(request):
-def home(request):
+
+def closestDEA(request):
     #my_ubication = ()
     more_D = Dea.objects.all()
     #print(get_distance(more_D)[3])
